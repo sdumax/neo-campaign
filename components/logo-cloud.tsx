@@ -12,7 +12,7 @@ const brands = [
 export function LogoCloud() {
   return (
     <section className="relative overflow-hidden bg-background px-6 py-24">
-      <div className="absolute inset-0 flex items-start justify-center pt-16 pointer-events-none">
+      <div className="pointer-events-none absolute inset-0 flex items-start justify-center pt-16">
         <div className="h-40 w-[700px] rounded-full bg-primary/15 blur-3xl" />
       </div>
       <div className="relative mx-auto max-w-6xl">
@@ -23,7 +23,7 @@ export function LogoCloud() {
           </span>
           <div className="h-px w-20 bg-primary" />
         </div>
-        <div className="flex items-center justify-center gap-12 flex-nowrap">
+        <div className="flex flex-nowrap items-center justify-center gap-12">
           {brands.map((name) => (
             <span key={name} className="text-sm font-medium text-muted-foreground whitespace-nowrap">
               {name}

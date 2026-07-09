@@ -9,11 +9,11 @@ const placeholderCards = [
   { aspect: "aspect-[3/4]", gradient: "from-primary/15 to-primary/5" },
 ]
 
-export function HeroSection() {
+export function Hero() {
   return (
-    <section className="relative min-h-[90vh] flex items-center px-6 bg-background overflow-hidden">
-      <div className="mx-auto max-w-6xl w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <section className="relative flex min-h-[90vh] items-center overflow-hidden bg-background px-6">
+      <div className="mx-auto w-full max-w-6xl">
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div className="flex flex-col gap-8 pt-16">
             <h1 className="text-5xl font-bold leading-tight tracking-tight text-foreground sm:text-6xl md:text-7xl">
               Creator
@@ -22,11 +22,11 @@ export function HeroSection() {
               <br />
               simplified.
             </h1>
-            <p className="text-lg leading-relaxed text-muted-foreground max-w-md">
+            <p className="max-w-md text-lg leading-relaxed text-muted-foreground">
               Helping brands discover creators who drive attention,
               trust, and sales.
             </p>
-            <Button size="lg" className="rounded-[var(--radius)] w-fit">
+            <Button size="lg" className="w-fit rounded-[var(--radius)]">
               Get in touch
             </Button>
           </div>
@@ -45,7 +45,7 @@ export function HeroSection() {
                 <div className={`w-full rounded-[var(--radius)] bg-gradient-to-br ${placeholderCards[5].gradient} ${placeholderCards[5].aspect}`} />
               </div>
             </div>
-            <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+            <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-background to-transparent" />
           </div>
         </div>
       </div>

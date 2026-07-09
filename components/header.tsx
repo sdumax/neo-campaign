@@ -11,10 +11,10 @@ export function Header() {
           </span>
         </div>
         <nav className="ml-12 flex items-center gap-8">
-          <a href="#" className="text-sm font-medium text-foreground">
+          <a href="/creators" className="text-sm font-medium text-foreground">
             Creators
           </a>
-          <a href="#" className="text-sm font-medium text-foreground">
+          <a href="/brands" className="text-sm font-medium text-foreground">
             Brands
           </a>
         </nav>

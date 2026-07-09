@@ -46,7 +46,7 @@ export function FeaturesSection() {
               <p className="mb-12 text-sm leading-relaxed text-muted-foreground">
                 {card.description}
               </p>
-              <Button className="mt-auto w-fit rounded-[var(--radius)] self-start">
+              <Button className="mt-auto w-fit self-start rounded-[var(--radius)]">
                 {card.buttonText}
               </Button>
             </div>
