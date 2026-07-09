@@ -3,6 +3,7 @@ import { VideoGrid } from "./components/video-grid"
 import { CategoriesSection } from "./components/categories-section"
 import { CampaignProcess } from "./components/campaign-process"
 import { ContactSection } from "./components/contact-section"
+import { Footer } from "@/components/footer"
 import { LogoCloud } from "@/components/logo-cloud"
 
 export default function BrandsPage() {
@@ -14,6 +15,7 @@ export default function BrandsPage() {
       <CategoriesSection />
       <CampaignProcess />
       <ContactSection />
+      <Footer />
     </>
   )
 }
