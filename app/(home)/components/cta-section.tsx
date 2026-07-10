@@ -1,20 +1,19 @@
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 
 const metrics = [
   { value: "450M+", label: "Impressions Generated" },
   { value: "300+", label: "Creators Worked With" },
   { value: "48hr", label: "Avg. Creator Match Time" },
   { value: "87%", label: "Brand Retention Rate" },
-]
+];
 
 export function CtaSection() {
   return (
-    <section className="relative overflow-hidden bg-background px-6 py-24">
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/20 via-primary/5 to-transparent" />
+    <section className="relative overflow-hidden px-6 py-24 bg-background">
       <div className="relative mx-auto max-w-6xl">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
           <div>
-            <h2 className="text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl">
+            <h2 className="text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl font-heading">
               Successful
               <br />
               Campaigns Are the
@@ -24,10 +23,10 @@ export function CtaSection() {
             <div className="mt-14 grid grid-cols-2 gap-x-8 gap-y-10">
               {metrics.map((m) => (
                 <div key={m.value}>
-                  <div className="text-5xl font-bold text-foreground">
+                  <div className="text-4xl md:text-6xl font-bold text-foreground">
                     {m.value}
                   </div>
-                  <div className="mt-2 h-px w-24 bg-foreground/20" />
+                  <div className="mt-2 h-px  bg-[#CCD0D5]" />
                   <div className="mt-2 text-sm font-medium text-foreground">
                     {m.label}
                   </div>
@@ -35,7 +34,7 @@ export function CtaSection() {
               ))}
             </div>
           </div>
-          <div className="rounded-[var(--radius)] bg-card p-8">
+          <div className="rounded-(--radius)">
             <h3 className="mb-3 text-2xl font-medium text-foreground">
               Work with us
             </h3>
@@ -44,10 +43,10 @@ export function CtaSection() {
               possible.
             </p>
             <div className="flex gap-4">
-              <Button className="flex-1 rounded-[var(--radius)]">
+              <Button className="flex-1 rounded-(--radius)">
                 I am a creator
               </Button>
-              <Button className="flex-1 rounded-[var(--radius)]">
+              <Button className="flex-1 rounded-(--radius)">
                 I am a brand
               </Button>
             </div>
@@ -55,5 +54,5 @@ export function CtaSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

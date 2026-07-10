@@ -17,11 +17,11 @@ const placeholderCards = [
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-[90vh] items-center overflow-hidden bg-background px-6">
+    <section className="relative flex min-h-[90vh] items-center overflow-hidden px-6">
       <div className="mx-auto w-full max-w-6xl">
         <div className="grid items-center gap-6 lg:grid-cols-2 lg:gap-16">
           <div className="order-2 flex flex-col gap-4 md:pt-4 lg:order-1">
-            <h1 className="text-[40px] font-semibold leading-tight tracking-tight text-foreground md:text-[90px]">
+            <h1 className="text-[48px] font-semibold leading-tight font-heading tracking-tight text-foreground md:text-[90px]">
               Creator
               <br />
               partnerships
@@ -34,7 +34,7 @@ export function Hero() {
             </p>
             <Button
               size="lg"
-              className="w-fit text-[#0a0a0a] text-sm font-medium">
+              className="w-full md:w-fit text-[#0a0a0a] text-sm font-medium">
               Get in touch
             </Button>
           </div>
@@ -42,30 +42,30 @@ export function Hero() {
             <div className="grid grid-cols-3 gap-4">
               <div className="flex flex-col gap-4">
                 <div
-                  className={`w-full rounded-[var(--radius)] bg-gradient-to-br ${placeholderCards[0].gradient} ${placeholderCards[0].aspect}`}
+                  className={`w-full rounded-(--radius) bg-linear-to-br ${placeholderCards[0].gradient} ${placeholderCards[0].aspect}`}
                 />
                 <div
-                  className={`w-full rounded-[var(--radius)] bg-gradient-to-br ${placeholderCards[1].gradient} ${placeholderCards[1].aspect}`}
+                  className={`w-full rounded-(--radius) bg-linear-to-br ${placeholderCards[1].gradient} ${placeholderCards[1].aspect}`}
                 />
               </div>
               <div className="flex flex-col gap-4 pt-8">
                 <div
-                  className={`w-full rounded-[var(--radius)] bg-gradient-to-br ${placeholderCards[2].gradient} ${placeholderCards[2].aspect}`}
+                  className={`w-full rounded-(--radius) bg-linear-to-br ${placeholderCards[2].gradient} ${placeholderCards[2].aspect}`}
                 />
                 <div
-                  className={`w-full rounded-[var(--radius)] bg-gradient-to-br ${placeholderCards[3].gradient} ${placeholderCards[3].aspect}`}
+                  className={`w-full rounded-(--radius) bg-linear-to-br ${placeholderCards[3].gradient} ${placeholderCards[3].aspect}`}
                 />
               </div>
               <div className="flex flex-col gap-4">
                 <div
-                  className={`w-full rounded-[var(--radius)] bg-gradient-to-br ${placeholderCards[4].gradient} ${placeholderCards[4].aspect}`}
+                  className={`w-full rounded-(--radius) bg-linear-to-br ${placeholderCards[4].gradient} ${placeholderCards[4].aspect}`}
                 />
                 <div
-                  className={`w-full rounded-[var(--radius)] bg-gradient-to-br ${placeholderCards[5].gradient} ${placeholderCards[5].aspect}`}
+                  className={`w-full rounded-(--radius) bg-linear-to-br ${placeholderCards[5].gradient} ${placeholderCards[5].aspect}`}
                 />
               </div>
             </div>
-            <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-background to-transparent" />
+            <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-1/3 bg-linear-to-t from-background to-transparent" />
           </div>
         </div>
       </div>

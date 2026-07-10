@@ -1,32 +1,31 @@
-const partners = [
-  "Higgsfield",
-  "Vidu",
-  "OpusClip",
-  "ElevenLabs",
-  "Topview",
-  "movavi",
-  "TubeMagic",
-  "OpenArt",
-  "Hailuo AI",
-  "invideo",
-  "PixVerse",
-  "filmora",
-]
+import Image from "next/image";
+
+const partnerImages = [
+  { src: "/brand-4.png", alt: "Brand 4" },
+  { src: "/brand-6.png", alt: "Brand 6" },
+  { src: "/brand-5.png", alt: "Brand 5" },
+  { src: "/brand-11.png", alt: "Brand 11" },
+  { src: "/brand-10.png", alt: "Brand 10" },
+  { src: "/brand-9.png", alt: "Brand 9" },
+  { src: "/brand-13.png", alt: "Brand 13" },
+  { src: "/brand-8.png", alt: "Brand 8" },
+  { src: "/brand-1.png", alt: "Brand 1" },
+  { src: "/brand-2.png", alt: "Brand 2" },
+  { src: "/brand-7.png", alt: "Brand 7" },
+  { src: "/brand-3.png", alt: "Brand 3" },
+];
 
 const stats = [
   { value: "$117K+", label: "Revenue Generated" },
   { value: "57", label: "Top AI Brands Worked With" },
-  { value: "15%", label: "Flat commission — creators keep the rest" },
-]
+  { value: "15%", label: "Flat commission - creators keep the rest" },
+];
 
 export function StatsSection() {
   return (
-    <section className="relative overflow-hidden bg-background px-6 py-24">
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-        <div className="h-[600px] w-[900px] rounded-full bg-primary/20 blur-3xl" />
-      </div>
-      <div className="relative mx-auto max-w-6xl">
-        <div className="mb-16 text-center">
+    <section className="relative overflow-hidden px-6 py-24">
+      <div className="relative container mx-auto md:px-16">
+        <div className="mb-16 text-center mx-auto max-w-6xl">
           <h2 className="text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl">
             Built for results.
             <br />
@@ -41,28 +40,33 @@ export function StatsSection() {
             work.
           </p>
         </div>
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_auto]">
-          <div className="grid grid-cols-3 gap-4">
-            {partners.map((name) => (
+        <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1fr_auto]">
+          <div className="grid grid-cols-3 gap-6">
+            {partnerImages.map((brand) => (
               <div
-                key={name}
-                className="flex items-center justify-center rounded-[var(--radius)] bg-card p-6"
-              >
-                <span className="text-sm font-medium text-muted-foreground">
-                  {name}
-                </span>
+                key={brand.src}
+                className="flex items-center justify-center rounded-(--radius) bg-card md:h-34.5 md:w-70 w-26 h-17.5">
+                <div className="relative h-9 w-20 md:w-30 md:h-16">
+                  <Image
+                    src={brand.src}
+                    alt={brand.alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-contain"
+                  />
+                </div>
               </div>
             ))}
           </div>
-          <div className="flex flex-col gap-10">
+          <div className="flex flex-col gap-10 md:self-center">
             {stats.map((stat) => (
               <div key={stat.value} className="flex gap-5">
                 <div className="w-0.5 shrink-0 bg-primary" />
                 <div>
-                  <div className="text-5xl font-bold text-foreground">
+                  <div className="text-[54px] font-bold text-foreground font-heading">
                     {stat.value}
                   </div>
-                  <div className="mt-1 text-sm text-muted-foreground">
+                  <div className="mt-1 text-muted-foreground font-sans text-wrap">
                     {stat.label}
                   </div>
                 </div>
@@ -72,5 +76,5 @@ export function StatsSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -1,35 +1,43 @@
-const brands = [
-  "Hailuo AI",
-  "invideo",
-  "PixVerse",
-  "filmora",
-  "Higgsfield",
-  "OpusClip",
-  "Vidu",
-  "ElevenLabs",
-];
+import Image from "next/image";
+
+const brandLogos = Array.from({ length: 8 }, (_, i) => ({
+  src: `/brand-${i + 1}.png`,
+  alt: `Brand ${i + 1}`,
+}));
+
+const scrollItems = [...brandLogos, ...brandLogos];
 
 export function LogoCloud() {
   return (
-    <section className="relative overflow-hidden bg-background px-6 py-24">
-      <div className="pointer-events-none absolute inset-0 flex items-start justify-center pt-16">
-        <div className="h-40 w-175 rounded-full bg-primary/10 blur-2xl" />
+    <section className="relative overflow-hidden py-16 md:py-24">
+      <div className="pointer-events-none absolute inset-0 items-start justify-center pt-16 flex">
+        <div className="h-40 w-175 rounded-full bg-primary/20 blur-3xl" />
       </div>
-      <div className="relative mx-auto max-w-6xl">
+      <div className="relative mx-auto max-w-6xl px-6">
         <div className="mb-14 flex items-center justify-center gap-4">
-          <div className="h-px w-10 bg-gradient-to-r from-primary to-transparent" />
-          <span className="text-xs font-semibold tracking-[0.15em] text-muted-foreground uppercase whitespace-nowrap">
+          <div className="h-px w-10 bg-linear-to-r from-primary to-transparent" />
+          <span className="text-xs font-semibold tracking-[0.15em] text-muted-foreground uppercase whitespace-nowrap font-sans">
             TRUSTED BY LEADING AI BRANDS
           </span>
-          <div className="h-px w-10 bg-gradient-to-r from-transparent to-primary" />
+          <div className="h-px w-10 bg-linear-to-r from-transparent to-primary" />
         </div>
-        <div className="flex flex-nowrap items-center justify-center gap-12">
-          {brands.map((name) => (
-            <span
-              key={name}
-              className="text-sm font-medium text-muted-foreground whitespace-nowrap">
-              {name}
-            </span>
+      </div>
+      <div className="relative overflow-hidden">
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-linear-to-r from-background to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-linear-to-l from-background to-transparent" />
+        <div className="flex w-fit animate-marquee">
+          {scrollItems.map((item, i) => (
+            <div
+              key={`${item.src}-${i}`}
+              className="relative mx-6 md:mx-16 h-10 w-32 shrink-0">
+              <Image
+                src={item.src}
+                alt={item.alt}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-contain"
+              />
+            </div>
           ))}
         </div>
       </div>

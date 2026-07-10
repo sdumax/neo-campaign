@@ -1,8 +1,8 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { Logo } from "@/components/logo";
 import { Menu, X } from "lucide-react";
-import Image from "next/image";
 import { useState } from "react";
 
 export function Header() {
@@ -11,17 +11,7 @@ export function Header() {
   return (
     <header className="relative z-50 h-24 bg-background/40">
       <div className="mx-auto flex h-full max-w-6xl items-center px-6">
-        <div className="flex items-center gap-3">
-          <Image
-            src="/logo.png"
-            alt="NeoCampaign Logo"
-            width={40}
-            height={40}
-          />
-          <span className="text-xl md:text-[26px] font-medium text-foreground">
-            NeoCampaign
-          </span>
-        </div>
+        <Logo className="text-xl md:text-[26px]" />
         <nav className="ml-12 hidden md:flex items-center gap-8">
           <a href="/creators" className="text-sm font-medium text-foreground">
             Creators
