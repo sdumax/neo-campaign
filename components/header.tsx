@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/logo";
 import { Menu, X } from "lucide-react";
@@ -13,12 +14,12 @@ export function Header() {
       <div className="mx-auto flex h-full max-w-6xl items-center px-6">
         <Logo className="text-xl md:text-[26px]" />
         <nav className="ml-12 hidden md:flex items-center gap-8">
-          <a href="/creators" className="text-sm font-medium text-foreground">
+          <Link href="/creators" className="text-sm font-medium text-foreground">
             Creators
-          </a>
-          <a href="/brands" className="text-sm font-medium text-foreground">
+          </Link>
+          <Link href="/brands" className="text-sm font-medium text-foreground">
             Brands
-          </a>
+          </Link>
         </nav>
         <div className="ml-auto hidden md:block">
           <Button className="h-13 w-35 text-[#0a0a0a] text-sm font-medium">
@@ -39,18 +40,18 @@ export function Header() {
       {isMenuOpen && (
         <div className="absolute left-0 right-0 top-24 z-50 border-b border-border bg-background md:hidden">
           <div className="mx-auto flex max-w-6xl items-center justify-center gap-8 px-6 py-4">
-            <a
+            <Link
               href="/creators"
               className="text-sm font-medium text-foreground"
               onClick={() => setIsMenuOpen(false)}>
               Creators
-            </a>
-            <a
+            </Link>
+            <Link
               href="/brands"
               className="text-sm font-medium text-foreground"
               onClick={() => setIsMenuOpen(false)}>
               Brands
-            </a>
+            </Link>
           </div>
         </div>
       )}

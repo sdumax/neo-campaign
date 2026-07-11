@@ -5,14 +5,11 @@ const videos = [
   { title: "Higgsfield Integration" },
   { title: "TopView Integration" },
   { title: "OpenArt Integration" },
-]
+];
 
 export function VideoGrid() {
   return (
-    <section className="relative overflow-hidden bg-background px-6 py-24">
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-        <div className="h-[600px] w-[900px] rounded-full bg-primary/20 blur-3xl" />
-      </div>
+    <section className="relative overflow-hidden px-6 py-24">
       <div className="relative mx-auto max-w-6xl">
         <div className="mb-14 text-center">
           <p className="mx-auto max-w-3xl text-2xl font-medium leading-relaxed text-muted-foreground sm:text-3xl">
@@ -27,15 +24,13 @@ export function VideoGrid() {
           {videos.map((video) => (
             <div
               key={video.title}
-              className="overflow-hidden rounded-[var(--radius)] bg-card"
-            >
+              className="overflow-hidden rounded-[var(--radius)] bg-card">
               <div className="relative aspect-video w-full bg-gradient-to-br from-primary/20 to-primary/5">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="flex size-14 items-center justify-center rounded-full bg-primary">
                     <svg
                       viewBox="0 0 24 24"
-                      className="size-6 fill-white text-white"
-                    >
+                      className="size-6 fill-white text-white">
                       <path d="M5 3l14 9-14 9V3z" />
                     </svg>
                   </div>
@@ -51,5 +46,5 @@ export function VideoGrid() {
         </div>
       </div>
     </section>
-  )
+  );
 }

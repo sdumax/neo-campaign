@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { MessageIcon } from "@/components/message-icon";
+import { MessageIcon } from "@/components/svgIcons/message-icon";
 
 const cards = [
   {

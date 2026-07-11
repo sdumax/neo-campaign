@@ -1,11 +1,12 @@
-import { Button } from "@/components/ui/button"
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 const metrics = [
   { value: "450M+", label: "Impressions Generated" },
   { value: "300+", label: "Creators Worked With" },
   { value: "48hr", label: "Avg. Creator Match Time" },
   { value: "87%", label: "Brand Retention Rate" },
-]
+];
 
 export function ContactSection() {
   return (
@@ -76,10 +77,13 @@ export function ContactSection() {
                 </Field>
               </div>
               <Field label="Budget" required>
-                <select className="w-full appearance-none rounded-[var(--radius)] border border-primary bg-card px-4 py-3 text-sm text-muted-foreground focus:outline-none">
-                  <option value="" disabled selected>
+                <select
+                  className="w-full appearance-none rounded-[var(--radius)] border border-primary bg-card px-4 py-3 text-sm text-muted-foreground focus:outline-none"
+                  defaultValue="0">
+                  <option value="0" disabled>
                     Please select
                   </option>
+                  <option value="1k-5k">$1K - $5K</option>
                   <option value="5k-10k">$5K - $10K</option>
                   <option value="10k-25k">$10K - $25K</option>
                   <option value="25k-50k">$25K - $50K</option>
@@ -100,9 +104,9 @@ export function ContactSection() {
                 />
                 <span className="text-sm text-foreground">
                   I agree to the{" "}
-                  <a href="#" className="text-primary underline">
+                  <Link href="#" className="text-primary underline">
                     Privacy Policy
-                  </a>
+                  </Link>
                   <span className="text-primary">*</span>
                 </span>
               </label>
@@ -114,7 +118,7 @@ export function ContactSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 function Field({
@@ -122,9 +126,9 @@ function Field({
   required,
   children,
 }: {
-  label: string
-  required?: boolean
-  children: React.ReactNode
+  label: string;
+  required?: boolean;
+  children: React.ReactNode;
 }) {
   return (
     <div className="flex flex-col gap-1.5">
@@ -134,5 +138,5 @@ function Field({
       </label>
       {children}
     </div>
-  )
+  );
 }

@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { Logo } from "@/components/logo"
 
 export function Footer() {
@@ -8,12 +9,12 @@ export function Footer() {
           <div className="flex items-center gap-8">
             <Logo className="text-lg" />
             <div className="flex items-center gap-6">
-              <a href="#" className="text-sm font-medium text-foreground">
+              <Link href="/creators" className="text-sm font-medium text-foreground">
                 Creators
-              </a>
-              <a href="#" className="text-sm font-medium text-foreground">
+              </Link>
+              <Link href="/brands" className="text-sm font-medium text-foreground">
                 Brands
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -21,9 +22,9 @@ export function Footer() {
           &copy; 2026 NeoCampaign, a trade name of CyberCashCoach LLC. All
           rights reserved
           <span className="mx-2">&middot;</span>
-          <a href="#" className="underline">Terms and Conditions</a>
+          <Link href="#" className="underline">Terms and Conditions</Link>
           <span className="mx-2">&middot;</span>
-          <a href="#" className="underline">Privacy Policy</a>
+          <Link href="#" className="underline">Privacy Policy</Link>
         </p>
       </div>
     </footer>

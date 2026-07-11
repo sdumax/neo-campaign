@@ -10,8 +10,8 @@ const scrollItems = [...brandLogos, ...brandLogos];
 export function LogoCloud() {
   return (
     <section className="relative overflow-hidden py-16 md:py-24">
-      <div className="pointer-events-none absolute inset-0 items-start justify-center pt-16 flex">
-        <div className="h-40 w-175 rounded-full bg-primary/20 blur-3xl" />
+      <div className="pointer-events-none absolute inset-0 items-start justify-center pt-16 flex rounded- bg-radial from-primary from-5% to-background opacity-35 md:opacity-15 blur-">
+        {/* <div className="h-40 w-full md:h-80 md:w-200 bg-[radial-gradient(ellipse_at_center,var(--primary)_0%,transparent_70%)] opacity-15" /> */}
       </div>
       <div className="relative mx-auto max-w-6xl px-6">
         <div className="mb-14 flex items-center justify-center gap-4">

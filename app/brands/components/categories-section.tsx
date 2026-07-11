@@ -11,7 +11,7 @@ const categories = [
 
 export function CategoriesSection() {
   return (
-    <section className="bg-background px-6 py-24">
+    <section className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[11fr_9fr]">
           <div>

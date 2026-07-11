@@ -11,10 +11,8 @@ const creators = [
 
 export function CreatorsGrid() {
   return (
-    <section className="relative overflow-hidden bg-background px-6 py-24">
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-        <div className="h-[600px] w-[900px] rounded-full bg-primary/20 blur-3xl" />
-      </div>
+    <section className="relative overflow-hidden px-6 py-24">
+      
       <div className="relative mx-auto max-w-6xl">
         <div className="mb-14 text-center">
           <h2 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">

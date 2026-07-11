@@ -46,6 +46,16 @@
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
   --animate-marquee: marquee 30s linear infinite;
+  --animate-globe-spin: globe-spin 8s linear infinite;
+}
+
+@keyframes globe-spin {
+  0% {
+    transform: perspective(800px) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(800px) rotateY(360deg);
+  }
 }
 
 @keyframes marquee {
