@@ -36,8 +36,8 @@ export function CampaignProcess() {
   const rightCards = steps.slice(3)
 
   return (
-    <section className="relative overflow-hidden bg-background px-6 py-24">
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/20 via-primary/5 to-transparent" />
+    <section className="relative overflow-hidden px-6 py-24">
+      <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-primary/20 via-primary/5 to-transparent" />
       <div className="relative mx-auto max-w-6xl">
         <div className="mb-16 text-center">
           <h2 className="text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl">
@@ -55,10 +55,9 @@ export function CampaignProcess() {
             {leftCards.map((card) => (
               <div
                 key={card.step}
-                className="rounded-[var(--radius)] border border-border bg-card p-6"
-              >
-                <div className="mb-4 flex size-7 items-center justify-center rounded-full border border-foreground/30">
-                  <span className="text-xs font-medium text-foreground/70">
+                className="rounded-[--radius] border border-border bg-card p-6">
+                <div className="mb-4 flex size-7 items-center justify-center rounded-full border border-[#E50914]">
+                  <span className="text-xs font-medium text-[#E50914]">
                     {card.step}
                   </span>
                 </div>
@@ -75,10 +74,9 @@ export function CampaignProcess() {
             {rightCards.map((card) => (
               <div
                 key={card.step}
-                className="rounded-[var(--radius)] border border-border bg-card p-6"
-              >
-                <div className="mb-4 flex size-7 items-center justify-center rounded-full border border-foreground/30">
-                  <span className="text-xs font-medium text-foreground/70">
+                className="rounded-[--radius] border border-border bg-card p-6">
+                <div className="mb-4 flex size-7 items-center justify-center rounded-full border border-[#E50914]">
+                  <span className="text-xs font-medium text-[#E50914]">
                     {card.step}
                   </span>
                 </div>
@@ -94,5 +92,5 @@ export function CampaignProcess() {
         </div>
       </div>
     </section>
-  )
+  );
 }

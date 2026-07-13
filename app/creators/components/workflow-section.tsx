@@ -1,3 +1,4 @@
+import { IconWrapper } from "@/components/svgIcons/icon-wrapper";
 import { ConnectIcon } from "@/components/svgIcons/connect-icon";
 import { PitchIcon } from "@/components/svgIcons/pitch-icon";
 import { NegotiateIcon } from "@/components/svgIcons/negotiate-icon";
@@ -63,11 +64,9 @@ export function WorkflowSection() {
               return (
                 <div
                   key={card.title}
-                  className="rounded-[var(--radius)] border border-border bg-card p-6">
-                  <div className="mb-4 flex size-12 items-center justify-center rounded-[var(--radius)] bg-[#E50914]/10">
-                    <Icon className="size-5 text-primary" strokeWidth={1.5} />
-                  </div>
-                  <h3 className="mb-2 text-lg font-medium text-foreground">
+                  className="rounded-(--radius) border border-border bg-card p-6">
+                  <IconWrapper icon={Icon} />
+                  <h3 className="my-3 text-lg font-medium text-foreground">
                     {card.title}
                   </h3>
                   <p className="text-sm leading-relaxed text-muted-foreground">
@@ -83,11 +82,9 @@ export function WorkflowSection() {
               return (
                 <div
                   key={card.title}
-                  className="rounded-[var(--radius)] border border-border bg-card p-6">
-                  <div className="mb-4 flex size-12 items-center justify-center rounded-[var(--radius)] bg-[#E50914]/10">
-                    <Icon className="size-5 text-primary" strokeWidth={1.5} />
-                  </div>
-                  <h3 className="mb-2 text-lg font-medium text-foreground">
+                  className="rounded-(--radius) border border-border bg-card p-6">
+                  <IconWrapper icon={Icon} />
+                  <h3 className="my-3 text-lg font-medium text-foreground">
                     {card.title}
                   </h3>
                   <p className="text-sm leading-relaxed text-muted-foreground">

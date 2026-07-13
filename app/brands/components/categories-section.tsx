@@ -1,12 +1,18 @@
-import { Cpu, Cloud, Pen, CreditCard, Smartphone, BookOpen } from "lucide-react"
+import { IconWrapper } from "@/components/svgIcons/icon-wrapper";
+import { AiIcon } from "@/components/svgIcons/ai-icon";
+import { SaasIcon } from "@/components/svgIcons/saas-icon";
+import { CreatorIcon } from "@/components/svgIcons/creator-icon";
+import { FintechIcon } from "@/components/svgIcons/fintech-icon";
+import { AppsIcon } from "@/components/svgIcons/apps-icon";
+import { EducationIcon } from "@/components/svgIcons/education-icon";
 
 const categories = [
-  { label: "AI tools & platforms", icon: Cpu },
-  { label: "SaaS & software", icon: Cloud },
-  { label: "Creator tools", icon: Pen },
-  { label: "Fintech & productivity tools", icon: CreditCard },
-  { label: "Apps & digital products", icon: Smartphone },
-  { label: "Education platforms", icon: BookOpen },
+  { label: "AI tools & platforms", icon: AiIcon },
+  { label: "SaaS & software", icon: SaasIcon },
+  { label: "Creator tools", icon: CreatorIcon },
+  { label: "Fintech & productivity tools", icon: FintechIcon },
+  { label: "Apps & digital products", icon: AppsIcon },
+  { label: "Education platforms", icon: EducationIcon },
 ]
 
 export function CategoriesSection() {
@@ -33,9 +39,7 @@ export function CategoriesSection() {
               const Icon = cat.icon
               return (
                 <div key={cat.label} className="flex items-center gap-4">
-                  <div className="flex size-10 shrink-0 items-center justify-center rounded-[var(--radius)] bg-primary">
-                    <Icon className="size-5 text-primary/70" strokeWidth={1.5} />
-                  </div>
+                  <IconWrapper icon={Icon} />
                   <span className="text-base font-medium text-foreground">
                     {cat.label}
                   </span>
