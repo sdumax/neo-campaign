@@ -20,7 +20,7 @@ export function FeaturesSection() {
   return (
     <section className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-16 text-center">
+        <div className="mb-16 text-center" data-aos="fade-up">
           <h2 className="text-[32px] md:text-[54px] font-semibold leading-tight font-heading tracking-tight text-foreground sm:text-3xl">
             Built for brands.
             <br />
@@ -34,9 +34,11 @@ export function FeaturesSection() {
           </p>
         </div>
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-          {cards.map((card) => (
+          {cards.map((card, index) => (
             <div
               key={card.title}
+              data-aos="fade-up"
+              data-aos-delay={index === 0 ? "100" : "200"}
               className="flex flex-col rounded-(--radius) border border-border bg-card p-8">
               <MessageIcon className="mb-6 size-5 text-primary" />
               <h3 className="mb-3 text-xl font-medium text-foreground">

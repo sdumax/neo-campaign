@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Instrument_Sans, Inter, Poppins } from "next/font/google";
+import "aos/dist/aos.css";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Header } from "@/components/header";
+import { AosInit } from "@/components/aos-init";
 
 const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
@@ -43,6 +45,7 @@ export default function RootLayout({
       className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, inter.variable, poppins.variable, instrumentSans.variable, "font-sans")}
     >
       <body className="min-h-full flex flex-col">
+        <AosInit />
         <Header />
         {children}
       </body>

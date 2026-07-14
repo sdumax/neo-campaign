@@ -20,7 +20,7 @@ export function CategoriesSection() {
     <section className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-[11fr_9fr]">
-          <div>
+          <div data-aos="fade-right">
             <h2 className="text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl">
               Built for Brands That
               <br />
@@ -34,7 +34,7 @@ export function CategoriesSection() {
               influence can turn into real action:
             </p>
           </div>
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-5" data-aos="fade-left">
             {categories.map((cat) => {
               const Icon = cat.icon
               return (

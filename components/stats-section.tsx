@@ -50,7 +50,7 @@ export function StatsSection({
   return (
     <section className="relative overflow-hidden px-6 py-24">
       <div className="relative container mx-auto md:px-16">
-        <div className="mb-16 text-center mx-auto max-w-6xl">
+        <div className="mb-16 text-center mx-auto max-w-6xl" data-aos="fade-up">
           <h2 className="text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl">
             {headingLines.map((line, i) => (
               <span key={i}>
@@ -66,7 +66,8 @@ export function StatsSection({
         <div
           className={`grid grid-cols-1 gap-16 ${partnerCols === 2 ? "lg:grid-cols-[1fr_1fr]" : "lg:grid-cols-[1fr_auto]"}`}>
           <div
-            className={`grid gap-6 ${partnerCols === 2 ? "grid-cols-2" : "grid-cols-3"}`}>
+            className={`grid gap-6 ${partnerCols === 2 ? "grid-cols-2" : "grid-cols-3"}`}
+            data-aos="fade-right">
             {partners.map((brand) => (
               <div
                 key={brand.src}
@@ -83,7 +84,7 @@ export function StatsSection({
               </div>
             ))}
           </div>
-          <div className="flex flex-col gap-10 md:self-center">
+          <div className="flex flex-col gap-10 md:self-center" data-aos="fade-left">
             {stats.map((stat) => (
               <div key={stat.value} className="flex gap-5 font-heading">
                 <div className="w-0.5 shrink-0 bg-primary" />

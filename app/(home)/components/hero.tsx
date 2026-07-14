@@ -20,7 +20,7 @@ export function Hero() {
     <section className="relative flex min-h-[90vh] items-center overflow-hidden px-6">
       <div className="mx-auto w-full max-w-6xl">
         <div className="grid items-center gap-6 lg:grid-cols-2 lg:gap-16">
-          <div className="order-2 flex flex-col gap-4 md:pt-4 lg:order-1">
+          <div className="order-2 flex flex-col gap-4 md:pt-4 lg:order-1" data-aos="fade-up">
             <h1 className="text-[48px] font-semibold leading-tight font-heading tracking-tight text-foreground md:text-[90px]">
               Creator
               <br />
@@ -38,7 +38,7 @@ export function Hero() {
               Get in touch
             </Button>
           </div>
-          <div className="relative order-1 lg:order-2">
+          <div className="relative order-1 lg:order-2" data-aos="fade-left" data-aos-delay="200">
             <div className="grid grid-cols-3 gap-4">
               <div className="flex flex-col gap-4">
                 <div

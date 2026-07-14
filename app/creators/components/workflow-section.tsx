@@ -45,7 +45,7 @@ export function WorkflowSection() {
   return (
     <section className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-16 text-center">
+        <div className="mb-16 text-center" data-aos="fade-up">
           <h2 className="text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl">
             Stop Sorting Emails. Start
             <br />
@@ -59,11 +59,13 @@ export function WorkflowSection() {
         </div>
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
           <div className="flex flex-col gap-8">
-            {leftCards.map((card) => {
+            {leftCards.map((card, index) => {
               const Icon = card.icon;
               return (
                 <div
                   key={card.title}
+                  data-aos="fade-up"
+                  data-aos-delay={String(index * 100)}
                   className="rounded-(--radius) border border-border bg-card p-6">
                   <IconWrapper icon={Icon} />
                   <h3 className="my-3 text-lg font-medium text-foreground">
@@ -77,11 +79,13 @@ export function WorkflowSection() {
             })}
           </div>
           <div className="flex flex-col gap-8 lg:pt-16">
-            {rightCards.map((card) => {
+            {rightCards.map((card, index) => {
               const Icon = card.icon;
               return (
                 <div
                   key={card.title}
+                  data-aos="fade-up"
+                  data-aos-delay={String((index + 3) * 100)}
                   className="rounded-(--radius) border border-border bg-card p-6">
                   <IconWrapper icon={Icon} />
                   <h3 className="my-3 text-lg font-medium text-foreground">

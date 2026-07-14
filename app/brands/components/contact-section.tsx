@@ -13,7 +13,7 @@ export function ContactSection() {
     <section className="bg-primary px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
-          <div>
+          <div data-aos="fade-right">
             <h2 className="text-4xl font-bold leading-tight tracking-tight text-primary-foreground sm:text-5xl">
               Successful
               <br />
@@ -35,7 +35,7 @@ export function ContactSection() {
               ))}
             </div>
           </div>
-          <div className="rounded-[var(--radius)] bg-card p-8">
+          <div className="rounded-[var(--radius)] bg-card p-8" data-aos="fade-left">
             <h3 className="mb-3 text-2xl font-medium text-foreground">
               Work with us
             </h3>

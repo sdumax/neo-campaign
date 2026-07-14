@@ -12,7 +12,7 @@ export function CtaSection() {
     <section className="relative overflow-hidden px-6 py-24 bg-background">
       <div className="relative mx-auto max-w-6xl">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
-          <div>
+          <div data-aos="fade-right">
             <h2 className="text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl font-heading">
               Successful
               <br />
@@ -34,7 +34,7 @@ export function CtaSection() {
               ))}
             </div>
           </div>
-          <div className="rounded-(--radius)">
+          <div className="rounded-(--radius)" data-aos="fade-left">
             <h3 className="mb-3 text-2xl font-medium text-foreground">
               Work with us
             </h3>

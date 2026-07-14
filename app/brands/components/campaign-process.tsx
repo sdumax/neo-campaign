@@ -39,7 +39,7 @@ export function CampaignProcess() {
     <section className="relative overflow-hidden px-6 py-24">
       <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-primary/20 via-primary/5 to-transparent" />
       <div className="relative mx-auto max-w-6xl">
-        <div className="mb-16 text-center">
+        <div className="mb-16 text-center" data-aos="fade-up">
           <h2 className="text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl">
             How We Build Campaigns
             <br />
@@ -55,6 +55,8 @@ export function CampaignProcess() {
             {leftCards.map((card) => (
               <div
                 key={card.step}
+                data-aos="fade-up"
+                data-aos-delay={String((card.step - 1) * 100)}
                 className="rounded-[--radius] border border-border bg-card p-6">
                 <div className="mb-4 flex size-7 items-center justify-center rounded-full border border-[#E50914]">
                   <span className="text-xs font-medium text-[#E50914]">
@@ -74,6 +76,8 @@ export function CampaignProcess() {
             {rightCards.map((card) => (
               <div
                 key={card.step}
+                data-aos="fade-up"
+                data-aos-delay={String((card.step - 1) * 100)}
                 className="rounded-[--radius] border border-border bg-card p-6">
                 <div className="mb-4 flex size-7 items-center justify-center rounded-full border border-[#E50914]">
                   <span className="text-xs font-medium text-[#E50914]">

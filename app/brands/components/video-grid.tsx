@@ -11,7 +11,7 @@ export function VideoGrid() {
   return (
     <section className="relative overflow-hidden px-6 py-24">
       <div className="relative mx-auto max-w-6xl">
-        <div className="mb-14 text-center">
+        <div className="mb-14 text-center" data-aos="fade-up">
           <p className="mx-auto max-w-3xl text-2xl font-medium leading-relaxed text-muted-foreground sm:text-3xl">
             Some of our creators&apos; videos are to this day the
             <br />
@@ -21,9 +21,11 @@ export function VideoGrid() {
           </p>
         </div>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-          {videos.map((video) => (
+          {videos.map((video, index) => (
             <div
               key={video.title}
+              data-aos="fade-up"
+              data-aos-delay={String(index * 100)}
               className="overflow-hidden rounded-[var(--radius)] bg-card">
               <div className="relative aspect-video w-full bg-gradient-to-br from-primary/20 to-primary/5">
                 <div className="absolute inset-0 flex items-center justify-center">
