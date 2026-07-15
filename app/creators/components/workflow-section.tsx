@@ -46,7 +46,7 @@ export function WorkflowSection() {
     <section className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <div className="mb-16 text-center" data-aos="fade-up">
-          <h2 className="text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl">
+          <h2 className="text-4xl md:text-[54px] font-bold leading-tight tracking-tight text-foreground sm:text-5xl">
             Stop Sorting Emails. Start
             <br />
             Closing Better Deals.
@@ -57,7 +57,7 @@ export function WorkflowSection() {
             without losing time to emails, chasing, and negotiation.
           </p>
         </div>
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 justify-self-center">
           <div className="flex flex-col gap-8">
             {leftCards.map((card, index) => {
               const Icon = card.icon;
@@ -66,7 +66,7 @@ export function WorkflowSection() {
                   key={card.title}
                   data-aos="fade-up"
                   data-aos-delay={String(index * 100)}
-                  className="rounded-(--radius) border border-border bg-card p-6">
+                  className="rounded-(--radius) border border-border bg-card p-6 max-w-90.5">
                   <IconWrapper icon={Icon} />
                   <h3 className="my-3 text-lg font-medium text-foreground">
                     {card.title}
@@ -86,7 +86,7 @@ export function WorkflowSection() {
                   key={card.title}
                   data-aos="fade-up"
                   data-aos-delay={String((index + 3) * 100)}
-                  className="rounded-(--radius) border border-border bg-card p-6">
+                  className="rounded-(--radius) border border-border bg-card max-w-90.5 p-6">
                   <IconWrapper icon={Icon} />
                   <h3 className="my-3 text-lg font-medium text-foreground">
                     {card.title}

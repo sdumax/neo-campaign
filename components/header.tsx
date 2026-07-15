@@ -11,10 +11,12 @@ export function Header() {
 
   return (
     <header className="relative z-50 h-24 bg-background/40">
-      <div className="mx-auto flex h-full max-w-6xl items-center px-6">
+      <div className="mx-auto flex h-full container items-center px-6">
         <Logo className="text-xl md:text-[26px]" />
         <nav className="ml-12 hidden md:flex items-center gap-8">
-          <Link href="/creators" className="text-sm font-medium text-foreground">
+          <Link
+            href="/creators"
+            className="text-sm font-medium text-foreground">
             Creators
           </Link>
           <Link href="/brands" className="text-sm font-medium text-foreground">
@@ -22,9 +24,7 @@ export function Header() {
           </Link>
         </nav>
         <div className="ml-auto hidden md:block">
-          <Button className="h-13 w-35 text-[#0a0a0a] text-sm font-medium">
-            Get in touch
-          </Button>
+          <Button>Get in touch</Button>
         </div>
         <button
           className="ml-auto p-3 md:hidden"

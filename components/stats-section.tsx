@@ -48,9 +48,9 @@ export function StatsSection({
 }: StatsSectionProps) {
   const headingLines = heading.split("\n");
   return (
-    <section className="relative overflow-hidden px-6 py-24">
-      <div className="relative container mx-auto md:px-16">
-        <div className="mb-16 text-center mx-auto max-w-6xl" data-aos="fade-up">
+    <section className="relative overflow-hidden py-24">
+      <div className="relative container mx-auto px-6 ">
+        <div className="mb-16 text-center mx-auto " data-aos="fade-up">
           <h2 className="text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl">
             {headingLines.map((line, i) => (
               <span key={i}>
@@ -59,7 +59,7 @@ export function StatsSection({
               </span>
             ))}
           </h2>
-          <p className="mx-auto mt-6 max-w-lg leading-relaxed text-muted-foreground">
+          <p className="mx-auto mt-6 max-w-4xl leading-relaxed text-muted-foreground">
             {description}
           </p>
         </div>
@@ -84,7 +84,9 @@ export function StatsSection({
               </div>
             ))}
           </div>
-          <div className="flex flex-col gap-10 md:self-center" data-aos="fade-left">
+          <div
+            className="flex flex-col gap-10 md:self-center"
+            data-aos="fade-left">
             {stats.map((stat) => (
               <div key={stat.value} className="flex gap-5 font-heading">
                 <div className="w-0.5 shrink-0 bg-primary" />

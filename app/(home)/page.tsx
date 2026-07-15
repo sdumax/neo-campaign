@@ -7,7 +7,7 @@ import { Footer } from "@/components/footer";
 
 export default function Home() {
   return (
-    <div className="bg-linear-to-b from-background from-0% via-background to-primary via-38% to-100%">
+    <div className="bg-linear-to-b from-background from-0% via-background to-primary/80 via-20% to-100%">
       <Hero />
       <LogoCloud />
       <FeaturesSection />

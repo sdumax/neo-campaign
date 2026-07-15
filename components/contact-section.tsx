@@ -10,7 +10,7 @@ const metrics = [
 
 export function ContactSection() {
   return (
-    <section className="bg-primary px-6 py-24">
+    <section className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
           <div data-aos="fade-right">
@@ -35,7 +35,7 @@ export function ContactSection() {
               ))}
             </div>
           </div>
-          <div className="rounded-[var(--radius)] bg-card p-8" data-aos="fade-left">
+          <div className="rounded-(--radius) bg-card p-8" data-aos="fade-left">
             <h3 className="mb-3 text-2xl font-medium text-foreground">
               Work with us
             </h3>
@@ -49,14 +49,14 @@ export function ContactSection() {
                   <input
                     type="text"
                     placeholder="John"
-                    className="w-full rounded-[var(--radius)] border border-primary bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
+                    className="w-full rounded-(--radius) border border-primary bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
                   />
                 </Field>
                 <Field label="Email" required>
                   <input
                     type="email"
                     placeholder="John@john.com"
-                    className="w-full rounded-[var(--radius)] border border-primary bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
+                    className="w-full rounded-(--radius) border border-primary bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
                   />
                 </Field>
               </div>
@@ -65,20 +65,20 @@ export function ContactSection() {
                   <input
                     type="text"
                     placeholder="Brand"
-                    className="w-full rounded-[var(--radius)] border border-primary bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
+                    className="w-full rounded-(--radius) border border-primary bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
                   />
                 </Field>
                 <Field label="Website" required>
                   <input
                     type="url"
                     placeholder="https://neocampaign.net/"
-                    className="w-full rounded-[var(--radius)] border border-primary bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
+                    className="w-full rounded-(--radius) border border-primary bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
                   />
                 </Field>
               </div>
               <Field label="Budget" required>
                 <select
-                  className="w-full appearance-none rounded-[var(--radius)] border border-primary bg-card px-4 py-3 text-sm text-muted-foreground focus:outline-none"
+                  className="w-full appearance-none rounded-(--radius) border border-primary bg-card px-4 py-3 text-sm text-muted-foreground focus:outline-none"
                   defaultValue="0">
                   <option value="0" disabled>
                     Please select
@@ -94,7 +94,7 @@ export function ContactSection() {
                 <textarea
                   rows={3}
                   placeholder="Your message to our team..."
-                  className="w-full resize-none rounded-[var(--radius)] border border-primary bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
+                  className="w-full resize-none rounded-(--radius) border border-primary bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
                 />
               </Field>
               <label className="flex items-start gap-3">
@@ -110,9 +110,7 @@ export function ContactSection() {
                   <span className="text-primary">*</span>
                 </span>
               </label>
-              <Button className="h-[54px] w-[115px] rounded-[var(--radius)]">
-                Submit
-              </Button>
+              <Button>Submit</Button>
             </form>
           </div>
         </div>

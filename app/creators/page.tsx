@@ -4,6 +4,7 @@ import { WorkflowSection } from "./components/workflow-section";
 import { StatsSection } from "@/components/stats-section";
 
 import { Footer } from "@/components/footer";
+import { ContactSection } from "../../components/contact-section";
 
 const creatorPartners = [
   { src: "/brand-4.png", alt: "Brand 4" },
@@ -36,6 +37,7 @@ export default function CreatorsPage() {
           stats={creatorStats}
           partnerCols={2}
         />
+        <ContactSection />
       </div>
       <Footer />
     </>

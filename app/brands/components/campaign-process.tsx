@@ -29,11 +29,11 @@ const steps = [
     description:
       "You get a transparent report covering impressions, engagement, conversions, and actionable insights.",
   },
-]
+];
 
 export function CampaignProcess() {
-  const leftCards = steps.slice(0, 3)
-  const rightCards = steps.slice(3)
+  const leftCards = steps.slice(0, 3);
+  const rightCards = steps.slice(3);
 
   return (
     <section className="relative overflow-hidden px-6 py-24">
@@ -50,7 +50,7 @@ export function CampaignProcess() {
             on what matters — growing your brand.
           </p>
         </div>
-        <div className="grid grid-cols-2 gap-8">
+        <div className="grid grid-cols-2 gap-30 self-center">
           <div className="flex flex-col gap-8">
             {leftCards.map((card) => (
               <div

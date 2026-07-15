@@ -9,8 +9,8 @@ const metrics = [
 
 export function CtaSection() {
   return (
-    <section className="relative overflow-hidden px-6 py-24 bg-background">
-      <div className="relative mx-auto max-w-6xl">
+    <section className="relative overflow-hidden py-24 ">
+      <div className="relative mx-auto container px-6">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
           <div data-aos="fade-right">
             <h2 className="text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl font-heading">
@@ -34,21 +34,19 @@ export function CtaSection() {
               ))}
             </div>
           </div>
-          <div className="rounded-(--radius)" data-aos="fade-left">
-            <h3 className="mb-3 text-2xl font-medium text-foreground">
-              Work with us
-            </h3>
-            <p className="mb-8 text-sm leading-relaxed text-muted-foreground">
-              Complete this quick form and we will get back to you as soon as
-              possible.
-            </p>
-            <div className="flex gap-4">
-              <Button className="flex-1 rounded-(--radius)">
-                I am a creator
-              </Button>
-              <Button className="flex-1 rounded-(--radius)">
-                I am a brand
-              </Button>
+          <div data-aos="fade-left">
+            <div className="rounded-(--radius) bg-background p-8">
+              <h3 className="mb-3 text-[32px] font-medium text-foreground">
+                Work with us
+              </h3>
+              <p className="mb-8 text-sm leading-relaxed text-muted-foreground">
+                Complete this quick form and we will get back to you as soon as
+                possible.
+              </p>
+              <div className="flex gap-4">
+                <Button className="flex-1">I am a creator</Button>
+                <Button className="flex-1">I am a brand</Button>
+              </div>
             </div>
           </div>
         </div>
