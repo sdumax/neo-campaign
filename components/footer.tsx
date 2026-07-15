@@ -9,10 +9,10 @@ export function Footer() {
           <div className="flex items-center gap-8">
             <Logo className="text-lg" />
             <div className="flex items-center gap-6">
-              <Link href="/creators" className="text-sm font-medium text-foreground">
+              <Link href="/creators" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
                 Creators
               </Link>
-              <Link href="/brands" className="text-sm font-medium text-foreground">
+              <Link href="/brands" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
                 Brands
               </Link>
             </div>

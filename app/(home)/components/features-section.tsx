@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { MessageIcon } from "@/components/svgIcons/message-icon";
 
@@ -7,12 +8,14 @@ const cards = [
     description:
       "Get brand deals, negotiate better terms, and build lasting partnerships.",
     buttonText: "Partner With Us",
+    href: "/creators",
   },
   {
     title: "For Brands",
     description:
       "Launch campaigns with creators who understand your market, your product, and your growth goals.",
     buttonText: "Build a Campaign",
+    href: "/brands",
   },
 ];
 
@@ -47,7 +50,9 @@ export function FeaturesSection() {
               <p className="mb-12 text-lg leading-relaxed text-muted-foreground">
                 {card.description}
               </p>
-              <Button className="mt-auto self-start">{card.buttonText}</Button>
+              <Link href={card.href} className="mt-auto self-start">
+                <Button>{card.buttonText}</Button>
+              </Link>
             </div>
           ))}
         </div>

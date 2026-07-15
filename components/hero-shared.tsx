@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { BgGlobe } from "@/components/bg-globe";
 
@@ -6,9 +7,10 @@ interface HeroSharedProps {
   heading: ReactNode;
   subtext: string;
   buttonText: string;
+  buttonHref: string;
 }
 
-export function HeroShared({ heading, subtext, buttonText }: HeroSharedProps) {
+export function HeroShared({ heading, subtext, buttonText, buttonHref }: HeroSharedProps) {
   return (
     <section className="relative flex min-h-[90vh] items-center flex-col md:flex-row overflow-hidden px-6 container mx-auto gap-4">
       <div className="pointer-events-none  lg:hidden w-3/4 ">
@@ -23,9 +25,9 @@ export function HeroShared({ heading, subtext, buttonText }: HeroSharedProps) {
             <p className="max-w-md text-lg leading-tight text-muted-foreground">
               {subtext}
             </p>
-            <Button className="w-fit">
-              {buttonText}
-            </Button>
+            <Link href={buttonHref} className="w-fit">
+              <Button>{buttonText}</Button>
+            </Link>
           </div>
           <div className="hidden lg:block" data-aos="zoom-in" data-aos-delay="200">
             <BgGlobe />

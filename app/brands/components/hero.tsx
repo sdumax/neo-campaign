@@ -14,6 +14,7 @@ export function Hero() {
       }
       subtext="NeoCampaign helps brands find, manage, and launch campaigns with creators who can turn attention into clicks, signups, and sales."
       buttonText="Start a Campaign"
+      buttonHref="#contact"
     />
   )
 }

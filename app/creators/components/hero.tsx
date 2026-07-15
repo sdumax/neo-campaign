@@ -14,6 +14,7 @@ export function Hero() {
       }
       subtext="From outreach to negotiation and campaign management, we take care of the hard part so you can keep creating."
       buttonText="Work With Us"
+      buttonHref="#contact"
     />
   )
 }

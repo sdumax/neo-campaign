@@ -64,7 +64,7 @@ export function StatsSection({
           </p>
         </div>
         <div
-          className={`grid grid-cols-1 gap-16 ${partnerCols === 2 ? "lg:grid-cols-[1fr_1fr]" : "lg:grid-cols-[1fr_auto]"}`}>
+          className={`grid grid-cols-1 gap-16 justify-self-center mx-auto ${partnerCols === 2 ? "lg:grid-cols-[2fr_1fr]" : "lg:grid-cols-[1fr_auto]"}`}>
           <div
             className={`grid gap-6 ${partnerCols === 2 ? "grid-cols-2" : "grid-cols-3"}`}
             data-aos="fade-right">

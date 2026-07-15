@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+
 import { Logo } from "@/components/logo";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
@@ -16,15 +17,17 @@ export function Header() {
         <nav className="ml-12 hidden md:flex items-center gap-8">
           <Link
             href="/creators"
-            className="text-sm font-medium text-foreground">
+            className="text-sm font-medium text-foreground hover:text-primary transition-colors">
             Creators
           </Link>
-          <Link href="/brands" className="text-sm font-medium text-foreground">
+          <Link href="/brands" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
             Brands
           </Link>
         </nav>
         <div className="ml-auto hidden md:block">
-          <Button>Get in touch</Button>
+          <Link href="/#contact">
+            <Button>Get in touch</Button>
+          </Link>
         </div>
         <button
           className="ml-auto p-3 md:hidden"
@@ -42,13 +45,13 @@ export function Header() {
           <div className="mx-auto flex max-w-6xl items-center justify-center gap-8 px-6 py-4">
             <Link
               href="/creators"
-              className="text-sm font-medium text-foreground"
+              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
               onClick={() => setIsMenuOpen(false)}>
               Creators
             </Link>
             <Link
               href="/brands"
-              className="text-sm font-medium text-foreground"
+              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
               onClick={() => setIsMenuOpen(false)}>
               Brands
             </Link>

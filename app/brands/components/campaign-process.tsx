@@ -37,7 +37,7 @@ export function CampaignProcess() {
 
   return (
     <section className="relative overflow-hidden px-6 py-24">
-      <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-primary/20 via-primary/5 to-transparent" />
+      {/* <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-primary/20 via-primary/5 to-transparent" /> */}
       <div className="relative mx-auto max-w-6xl">
         <div className="mb-16 text-center" data-aos="fade-up">
           <h2 className="text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl">

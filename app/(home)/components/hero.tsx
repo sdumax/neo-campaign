@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 const homeImages = [
@@ -32,7 +33,9 @@ export function Hero() {
               Helping brands discover creators who drive attention, trust, and
               sales.
             </p>
-            <Button className="w-full md:w-fit ">Get in touch</Button>
+            <Link href="#contact" className="w-full md:w-fit">
+              <Button className="w-full md:w-fit">Get in touch</Button>
+            </Link>
           </div>
           <div
             className="relative order-1 lg:order-2"
