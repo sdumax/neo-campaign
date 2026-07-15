@@ -10,7 +10,7 @@ const videos = [
 export function VideoGrid() {
   return (
     <section className="relative overflow-hidden px-6 py-24">
-      <div className="relative mx-auto container px-6">
+      <div className="relative mx-auto container md:px-24 px-6">
         <div className="mb-14 text-center" data-aos="fade-up">
           <p className="mx-auto max-w-3xl text-2xl font-medium leading-relaxed text-muted-foreground sm:text-3xl">
             Some of our creators&apos; videos are to this day the

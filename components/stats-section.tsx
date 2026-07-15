@@ -49,7 +49,7 @@ export function StatsSection({
   const headingLines = heading.split("\n");
   return (
     <section className="relative overflow-hidden py-24">
-      <div className="relative container mx-auto px-6 ">
+      <div className="relative container mx-auto md:px-24 px-6">
         <div className="mb-16 text-center mx-auto " data-aos="fade-up">
           <h2 className="text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl">
             {headingLines.map((line, i) => (

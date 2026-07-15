@@ -30,7 +30,7 @@ export function WorkWithUsSection({
 
   return (
     <section id="contact" className={"relative overflow-hidden py-24"}>
-      <div className={"relative mx-auto container px-6"}>
+      <div className={"relative mx-auto container md:px-24 px-6 "}>
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
           <div data-aos="fade-right">
             <h2

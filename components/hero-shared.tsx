@@ -12,7 +12,7 @@ interface HeroSharedProps {
 
 export function HeroShared({ heading, subtext, buttonText, buttonHref }: HeroSharedProps) {
   return (
-    <section className="relative flex min-h-[90vh] items-center flex-col md:flex-row overflow-hidden px-6 container mx-auto gap-4">
+    <section className="relative flex min-h-[90vh] items-center flex-col md:flex-row overflow-hidden md:px-24 px-6  container mx-auto gap-4">
       <div className="pointer-events-none  lg:hidden w-3/4 ">
         <BgGlobe />
       </div>
@@ -29,7 +29,10 @@ export function HeroShared({ heading, subtext, buttonText, buttonHref }: HeroSha
               <Button>{buttonText}</Button>
             </Link>
           </div>
-          <div className="hidden lg:block" data-aos="zoom-in" data-aos-delay="200">
+          <div
+            className="hidden lg:block"
+            data-aos="zoom-in"
+            data-aos-delay="200">
             <BgGlobe />
           </div>
         </div>

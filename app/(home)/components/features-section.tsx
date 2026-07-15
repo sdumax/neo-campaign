@@ -22,7 +22,7 @@ const cards = [
 export function FeaturesSection() {
   return (
     <section className="py-24">
-      <div className="mx-auto container px-6">
+      <div className="mx-auto container px-6 md:px-24 ">
         <div className="mb-16 text-center" data-aos="fade-up">
           <h2 className="text-[32px] md:text-[54px] font-semibold leading-tight font-heading tracking-tight text-foreground sm:text-3xl">
             Built for brands.

@@ -14,7 +14,7 @@ const creators = [
 export function CreatorsGrid() {
   return (
     <section className="relative overflow-hidden px-6 py-24">
-      <div className="relative mx-auto max-w-6xl">
+      <div className="relative mx-auto container md:px-24 px-6">
         <div className="mb-14 text-center" data-aos="fade-up">
           <h2 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-[54px]">
             Creators We&apos;ve Worked With

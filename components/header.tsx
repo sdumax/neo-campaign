@@ -12,7 +12,7 @@ export function Header() {
 
   return (
     <header className="relative z-50 h-24 bg-background/40">
-      <div className="mx-auto flex h-full container items-center px-6">
+      <div className="mx-auto flex h-full container items-center md:px-24 px-6">
         <Logo className="text-xl md:text-[26px]" />
         <nav className="ml-12 hidden md:flex items-center gap-8">
           <Link
@@ -20,7 +20,9 @@ export function Header() {
             className="text-sm font-medium text-foreground hover:text-primary transition-colors">
             Creators
           </Link>
-          <Link href="/brands" className="text-sm font-medium text-foreground hover:text-primary transition-colors">
+          <Link
+            href="/brands"
+            className="text-sm font-medium text-foreground hover:text-primary transition-colors">
             Brands
           </Link>
         </nav>

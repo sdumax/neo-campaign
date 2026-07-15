@@ -14,11 +14,63 @@ const homeImages = [
   { src: "/home9.png", aspect: "aspect-[3/4]" },
 ];
 
+function ImageGrid() {
+  return (
+    <div className="grid grid-cols-3 gap-4">
+      <div className="flex flex-col gap-4">
+        {[0, 1, 2].map((i) => (
+          <div
+            key={i}
+            className={`relative w-full rounded-(--radius) overflow-hidden ${homeImages[i].aspect}`}>
+            <Image
+              src={homeImages[i].src}
+              alt=""
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 33vw, 25vw"
+            />
+          </div>
+        ))}
+      </div>
+      <div className="flex flex-col gap-4 pt-8">
+        {[3, 4, 5].map((i) => (
+          <div
+            key={i}
+            className={`relative w-full rounded-(--radius) overflow-hidden ${homeImages[i].aspect}`}>
+            <Image
+              src={homeImages[i].src}
+              alt=""
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 33vw, 25vw"
+            />
+          </div>
+        ))}
+      </div>
+      <div className="flex flex-col gap-4">
+        {[6, 7, 8].map((i) => (
+          <div
+            key={i}
+            className={`relative w-full rounded-(--radius) overflow-hidden ${homeImages[i].aspect}`}>
+            <Image
+              src={homeImages[i].src}
+              alt=""
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 33vw, 25vw"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function Hero() {
   return (
-    <section className="relative flex min-h-[90vh] items-center overflow-hidden ">
-      <div className="mx-auto container px-6">
-        <div className="grid items-center gap-6 lg:grid-cols-2 lg:gap-16">
+    <section className="relative h-[85vh] overflow-hidden">
+      <div className="mx-auto container px-6 md:px-24 h-full">
+        <div className="grid items-center gap-6 h-full lg:grid-cols-2 lg:gap-16">
           <div
             className="order-2 flex flex-col gap-4 md:pt-4 lg:order-1"
             data-aos="fade-up">
@@ -38,57 +90,15 @@ export function Hero() {
             </Link>
           </div>
           <div
-            className="relative order-1 lg:order-2"
+            className="relative order-1 h-full overflow-hidden lg:order-2"
             data-aos="fade-left"
             data-aos-delay="200">
-            <div className="grid grid-cols-3 gap-4">
-              <div className="flex flex-col gap-4">
-                {[0, 1, 2].map((i) => (
-                  <div
-                    key={i}
-                    className={`relative w-full rounded-(--radius) overflow-hidden ${homeImages[i].aspect}`}>
-                    <Image
-                      src={homeImages[i].src}
-                      alt=""
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 33vw, 25vw"
-                    />
-                  </div>
-                ))}
-              </div>
-              <div className="flex flex-col gap-4 pt-8">
-                {[3, 4, 5].map((i) => (
-                  <div
-                    key={i}
-                    className={`relative w-full rounded-(--radius) overflow-hidden ${homeImages[i].aspect}`}>
-                    <Image
-                      src={homeImages[i].src}
-                      alt=""
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 33vw, 25vw"
-                    />
-                  </div>
-                ))}
-              </div>
-              <div className="flex flex-col gap-4">
-                {[6, 7, 8].map((i) => (
-                  <div
-                    key={i}
-                    className={`relative w-full rounded-(--radius) overflow-hidden ${homeImages[i].aspect}`}>
-                    <Image
-                      src={homeImages[i].src}
-                      alt=""
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 33vw, 25vw"
-                    />
-                  </div>
-                ))}
-              </div>
+            <div className="absolute top-0 left-0 right-0 h-30 z-10 bg-linear-to-b from-background to-transparent pointer-events-none" />
+            <div className="animate-scroll-up">
+              <ImageGrid />
+              <ImageGrid />
             </div>
-            <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-1/3 bg-linear-to-t from-background to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 h-40 z-10 bg-linear-to-t from-background to-transparent pointer-events-none" />
           </div>
         </div>
       </div>
