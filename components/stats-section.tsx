@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { AnimatedNumber } from "@/components/animated-number";
 
 interface Partner {
   src: string;
@@ -6,7 +9,9 @@ interface Partner {
 }
 
 interface Stat {
-  value: string;
+  value: number;
+  prefix?: string;
+  suffix?: string;
   label: string;
 }
 
@@ -34,9 +39,9 @@ const defaultPartners: Partner[] = [
 ];
 
 const defaultStats: Stat[] = [
-  { value: "$117K+", label: "Revenue Generated" },
-  { value: "57", label: "Top AI Brands Worked With" },
-  { value: "15%", label: "Flat commission - creators keep the rest" },
+  { value: 117, prefix: "$", suffix: "K+", label: "Revenue Generated" },
+  { value: 57, label: "Top AI Brands Worked With" },
+  { value: 15, suffix: "%", label: "Flat commission - creators keep the rest" },
 ];
 
 export function StatsSection({
@@ -88,11 +93,15 @@ export function StatsSection({
             className="flex flex-col gap-10 md:self-center"
             data-aos="fade-left">
             {stats.map((stat) => (
-              <div key={stat.value} className="flex gap-5 font-heading">
+              <div key={stat.label} className="flex gap-5 font-heading">
                 <div className="w-0.5 shrink-0 bg-primary" />
                 <div>
                   <div className="text-[54px] font-bold text-foreground font-heading">
-                    {stat.value}
+                    <AnimatedNumber
+                      end={stat.value}
+                      prefix={stat.prefix}
+                      suffix={stat.suffix}
+                    />
                   </div>
                   <div className="mt-1 text-muted-foreground font-sans text-wrap">
                     {stat.label}

@@ -18,9 +18,9 @@ const creatorPartners = [
 ];
 
 const creatorStats = [
-  { value: "200+", label: "Creators" },
-  { value: "<$10", label: "CPM for most of our campaigns" },
-  { value: "-50%", label: "CAC decreased acquisition cost" },
+  { value: 200, suffix: "+", label: "Creators" },
+  { value: 10, prefix: "<$", label: "CPM for most of our campaigns" },
+  { value: 50, prefix: "-", suffix: "%", label: "CAC decreased acquisition cost" },
 ];
 
 export default function CreatorsPage() {

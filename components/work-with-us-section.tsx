@@ -3,12 +3,13 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { CreatorForm, BrandForm } from "@/components/forms";
+import { AnimatedNumber } from "@/components/animated-number";
 
 const metrics = [
-  { value: "450M+", label: "Impressions Generated" },
-  { value: "300+", label: "Creators Worked With" },
-  { value: "48hr", label: "Avg. Creator Match Time" },
-  { value: "87%", label: "Brand Retention Rate" },
+  { value: 450, prefix: "", suffix: "M+", label: "Impressions Generated" },
+  { value: 300, prefix: "", suffix: "+", label: "Creators Worked With" },
+  { value: 48, prefix: "", suffix: "hr", label: "Avg. Creator Match Time" },
+  { value: 87, prefix: "", suffix: "%", label: "Brand Retention Rate" },
 ];
 
 type FormType = "creator" | "brand";
@@ -16,11 +17,13 @@ type FormType = "creator" | "brand";
 interface WorkWithUsSectionProps {
   mode: "toggle" | "direct";
   type?: "creator" | "brand";
+  variant?: "default" | "primary";
 }
 
 export function WorkWithUsSection({
   mode,
   type = "brand",
+  variant = "default",
 }: WorkWithUsSectionProps) {
   const [activeForm, setActiveForm] = useState<FormType | null>(null);
 
@@ -28,14 +31,30 @@ export function WorkWithUsSection({
     setActiveForm((prev) => (prev === form ? null : form));
   }
 
+  const isPrimary = variant === "primary";
+
   return (
-    <section id="contact" className={"relative overflow-hidden py-24"}>
-      <div className={"relative mx-auto container md:px-24 px-6 "}>
+    <section
+      id="contact"
+      className={
+        isPrimary
+          ? "bg-primar px-6 py-24"
+          : "relative overflow-hidden py-24"
+      }>
+      <div
+        className={
+          isPrimary
+            ? "mx-auto max-w-6xl"
+            : "relative mx-auto container px-6"
+        }>
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
           <div data-aos="fade-right">
             <h2
-              className={`text-4xl font-bold leading-tight tracking-tight sm:text-5xl font-heading text-foreground
-              `}>
+              className={`text-4xl font-bold leading-tight tracking-tight sm:text-5xl font-heading ${
+                isPrimary
+                  ? "text-primary-foreground"
+                  : "text-foreground"
+              }`}>
               Successful
               <br />
               Campaigns Are the
@@ -44,14 +63,32 @@ export function WorkWithUsSection({
             </h2>
             <div className="mt-14 grid grid-cols-2 gap-x-8 gap-y-10">
               {metrics.map((m) => (
-                <div key={m.value}>
+                <div key={m.label}>
                   <div
-                    className={`text-4xl md:text-6xl font-bold text-foreground
-                    `}>
-                    {m.value}
+                    className={`text-4xl md:text-6xl font-bold ${
+                      isPrimary
+                        ? "text-primary-foreground md:text-5xl"
+                        : "text-foreground"
+                    }`}>
+                    <AnimatedNumber
+                      end={m.value}
+                      prefix={m.prefix}
+                      suffix={m.suffix}
+                    />
                   </div>
-                  <div className={`mt-2 h-px bg-[#CCD0D5]`} />
-                  <div className={`mt-2 text-sm font-medium text-foreground`}>
+                  <div
+                    className={`mt-2 h-px ${
+                      isPrimary
+                        ? "w-24 bg-primary-foreground/20"
+                        : "bg-[#CCD0D5]"
+                    }`}
+                  />
+                  <div
+                    className={`mt-2 text-sm font-medium ${
+                      isPrimary
+                        ? "text-primary-foreground"
+                        : "text-foreground"
+                    }`}>
                     {m.label}
                   </div>
                 </div>
@@ -59,8 +96,16 @@ export function WorkWithUsSection({
             </div>
           </div>
           <div data-aos="fade-left">
-            <div className={"rounded-(--radius) p-8 bg-background"}>
-              <h3 className={"mb-3 font-medium text-[32px] text-foreground"}>
+            <div
+              className={`rounded-(--radius) p-8 ${
+                isPrimary ? "bg-card" : "bg-background"
+              }`}>
+              <h3
+                className={`mb-3 font-medium ${
+                  isPrimary
+                    ? "text-2xl text-foreground"
+                    : "text-[32px] text-foreground"
+                }`}>
                 Work with us
               </h3>
               <p className="mb-8 text-sm leading-relaxed text-muted-foreground">
