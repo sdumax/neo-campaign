@@ -57,7 +57,7 @@ export function CampaignProcess() {
                 key={card.step}
                 data-aos="fade-up"
                 data-aos-delay={String((card.step - 1) * 100)}
-                className="rounded-[--radius] border border-border bg-card p-6">
+                className="rounded-(--radius) border border-border bg-card p-6">
                 <div className="mb-4 flex size-7 items-center justify-center rounded-full border border-[#E50914]">
                   <span className="text-xs font-medium text-[#E50914]">
                     {card.step}
@@ -78,7 +78,7 @@ export function CampaignProcess() {
                 key={card.step}
                 data-aos="fade-up"
                 data-aos-delay={String((card.step - 1) * 100)}
-                className="rounded-[--radius] border border-border bg-card p-6">
+                className="rounded-(--radius) border border-border bg-card p-6">
                 <div className="mb-4 flex size-7 items-center justify-center rounded-full border border-[#E50914]">
                   <span className="text-xs font-medium text-[#E50914]">
                     {card.step}
