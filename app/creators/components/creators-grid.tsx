@@ -29,7 +29,7 @@ export function CreatorsGrid() {
               key={creator.handle}
               data-aos="zoom-in"
               data-aos-delay={String(index * 80)}>
-              <div className="relative aspect-[3/4] w-full overflow-hidden rounded-[var(--radius)]">
+              <div className="relative aspect-3/4 w-full overflow-hidden rounded-(--radius)">
                 <Image
                   src={creator.image}
                   alt={creator.handle}

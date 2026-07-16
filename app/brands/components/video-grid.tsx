@@ -26,8 +26,8 @@ export function VideoGrid() {
               key={video.title}
               data-aos="fade-up"
               data-aos-delay={String(index * 100)}
-              className="overflow-hidden rounded-[var(--radius)] bg-card">
-              <div className="relative aspect-video w-full bg-gradient-to-br from-primary/20 to-primary/5">
+              className="overflow-hidden rounded-(--radius) bg-card">
+              <div className="relative aspect-video w-full bg-linear-to-br from-primary/20 to-primary/5">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="flex size-14 items-center justify-center rounded-full bg-primary">
                     <svg
