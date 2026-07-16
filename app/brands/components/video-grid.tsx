@@ -1,10 +1,28 @@
 const videos = [
-  { title: "Pixverse Integration" },
-  { title: "Kling Integration" },
-  { title: "Kling Integration II" },
-  { title: "Higgsfield Integration" },
-  { title: "TopView Integration" },
-  { title: "OpenArt Integration" },
+  {
+    title: "Pixverse Integration",
+    url: "https://www.youtube.com/embed/1bXBYDFdkOQ",
+  },
+  {
+    title: "Kling Integration",
+    url: "https://www.youtube.com/embed/ngjYe5KTVqM",
+  },
+  {
+    title: "Kling Integration II",
+    url: "https://www.youtube.com/embed/E39_Kqk0iKw",
+  },
+  {
+    title: "Higgsfield Integration",
+    url: "https://www.youtube.com/embed/--w3Rumz9sM",
+  },
+  {
+    title: "TopView Integration",
+    url: "https://www.youtube.com/embed/L4ijTsL7tJI",
+  },
+  {
+    title: "OpenArt Integration",
+    url: "https://www.youtube.com/embed/TPV1Wa4if_U",
+  },
 ];
 
 export function VideoGrid() {
@@ -27,17 +45,13 @@ export function VideoGrid() {
               data-aos="fade-up"
               data-aos-delay={String(index * 100)}
               className="overflow-hidden rounded-(--radius) bg-card">
-              <div className="relative aspect-video w-full bg-linear-to-br from-primary/20 to-primary/5">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="flex size-14 items-center justify-center rounded-full bg-primary">
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="size-6 fill-white text-white">
-                      <path d="M5 3l14 9-14 9V3z" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
+              <iframe
+                src={video.url}
+                title={video.title}
+                className="aspect-video w-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
               <div className="p-4">
                 <h3 className="text-base font-medium text-foreground">
                   {video.title}
