@@ -20,7 +20,12 @@ const creatorPartners = [
 const creatorStats = [
   { value: 200, suffix: "+", label: "Creators" },
   { value: 10, prefix: "<$", label: "CPM for most of our campaigns" },
-  { value: 50, prefix: "-", suffix: "%", label: "CAC decreased acquisition cost" },
+  {
+    value: 50,
+    prefix: "-",
+    suffix: "%",
+    label: "CAC decreased acquisition cost",
+  },
 ];
 
 export default function CreatorsPage() {
@@ -30,7 +35,7 @@ export default function CreatorsPage() {
         <Hero />
         <CreatorsGrid />
       </div>
-      <div className="bg-linear-to-b from-background from-0% via-background to-primary/70 via-35% to-100%">
+      <div className="bg-linear-to-b from-background from-0% via-background to-primary/70 via-15% to-100%">
         <WorkflowSection />
         <StatsSection
           partners={creatorPartners}
