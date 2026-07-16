@@ -11,7 +11,7 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="relative z-50 h-24 bg-background/40">
+    <header className="sticky top-0 z-50 h-24 bg-background/40 backdrop-blur-xl border-b border-border/50">
       <div className="mx-auto flex h-full container items-center md:px-24 px-6">
         <Logo className="text-xl md:text-[26px]" />
         <nav className="ml-12 hidden md:flex items-center gap-8">

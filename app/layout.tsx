@@ -42,7 +42,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, inter.variable, poppins.variable, instrumentSans.variable, "font-sans")}
+      className={cn("h-full", "scroll-smooth", "antialiased", geistSans.variable, geistMono.variable, inter.variable, poppins.variable, instrumentSans.variable, "font-sans")}
     >
       <body className="min-h-full flex flex-col">
         <AosInit />

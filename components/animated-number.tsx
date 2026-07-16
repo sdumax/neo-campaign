@@ -7,10 +7,11 @@ interface AnimatedNumberProps {
   prefix?: string;
   suffix?: string;
   duration?: number;
+  delay?: number;
 }
 
-function easeOutCubic(t: number) {
-  return 1 - Math.pow(1 - t, 3);
+function easeOutExpo(t: number) {
+  return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
 }
 
 export function AnimatedNumber({
@@ -18,6 +19,7 @@ export function AnimatedNumber({
   prefix = "",
   suffix = "",
   duration = 2000,
+  delay = 0,
 }: AnimatedNumberProps) {
   const [display, setDisplay] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
@@ -31,20 +33,22 @@ export function AnimatedNumber({
       ([entry]) => {
         if (entry.isIntersecting && !hasAnimated.current) {
           hasAnimated.current = true;
-          const start = performance.now();
+          setTimeout(() => {
+            const start = performance.now();
 
-          function tick(now: number) {
-            const elapsed = now - start;
-            const progress = Math.min(elapsed / duration, 1);
-            const eased = easeOutCubic(progress);
-            setDisplay(Math.round(eased * end));
+            function tick(now: number) {
+              const elapsed = now - start;
+              const progress = Math.min(elapsed / duration, 1);
+              const eased = easeOutExpo(progress);
+              setDisplay(Math.round(eased * end));
 
-            if (progress < 1) {
-              requestAnimationFrame(tick);
+              if (progress < 1) {
+                requestAnimationFrame(tick);
+              }
             }
-          }
 
-          requestAnimationFrame(tick);
+            requestAnimationFrame(tick);
+          }, delay);
         }
       },
       { threshold: 0.3 }
@@ -52,7 +56,7 @@ export function AnimatedNumber({
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [end, duration]);
+  }, [end, duration, delay]);
 
   return (
     <span ref={ref}>

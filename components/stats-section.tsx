@@ -101,6 +101,7 @@ export function StatsSection({
                       end={stat.value}
                       prefix={stat.prefix}
                       suffix={stat.suffix}
+                      delay={1500}
                     />
                   </div>
                   <div className="mt-1 text-muted-foreground font-sans text-wrap">

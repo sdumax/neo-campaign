@@ -52,6 +52,7 @@ export function WorkWithUsSection({
                       end={m.value}
                       prefix={m.prefix}
                       suffix={m.suffix}
+                      delay={1500}
                     />
                   </div>
                   <div className={`mt-2 h-px bg-[#CCD0D5]`} />
@@ -75,13 +76,13 @@ export function WorkWithUsSection({
                 <>
                   <div className="flex gap-4">
                     <Button
-                      className="flex-1"
+                      className="flex-1 h-10 text-xs md:h-12 md:text-[15.4px]"
                       variant={activeForm === "creator" ? "outline" : "default"}
                       onClick={() => toggleForm("creator")}>
                       I am a creator
                     </Button>
                     <Button
-                      className="flex-1"
+                      className="flex-1 h-10 text-xs md:h-12 md:text-[15.4px]"
                       variant={activeForm === "brand" ? "outline" : "default"}
                       onClick={() => toggleForm("brand")}>
                       I am a brand
