@@ -26,11 +26,11 @@ export function Footer() {
           &copy; 2026 NeoCampaign, a trade name of CyberCashCoach LLC. All
           rights reserved
           <span className="mx-2">&middot;</span>
-          <Link href="#" className="underline">
+          <Link href="https://docs.google.com/document/d/1MnnFFBM91sBXZEgyc0uL5Y4PhLsbvuU-/edit?usp=sharing" target="_blank" rel="noopener noreferrer" className="underline">
             Terms and Conditions
           </Link>
           <span className="mx-2">&middot;</span>
-          <Link href="#" className="underline">
+          <Link href="https://docs.google.com/document/d/1SOeNiG9wGwNqYdjwaJipM2hAjUogCvzE/edit?usp=sharing" target="_blank" rel="noopener noreferrer" className="underline">
             Privacy Policy
           </Link>
         </p>

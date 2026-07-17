@@ -60,7 +60,7 @@ export function CreatorForm() {
         />
         <span className="text-sm text-foreground">
           I agree to the{" "}
-          <Link href="#" className="text-primary underline">
+          <Link href="https://docs.google.com/document/d/1SOeNiG9wGwNqYdjwaJipM2hAjUogCvzE/edit?usp=sharing" target="_blank" rel="noopener noreferrer" className="text-primary underline">
             Privacy Policy
           </Link>
           <span className="text-primary">*</span>
@@ -126,7 +126,7 @@ export function BrandForm() {
         />
         <span className="text-sm text-foreground">
           I agree to the{" "}
-          <Link href="#" className="text-primary underline">
+          <Link href="https://docs.google.com/document/d/1SOeNiG9wGwNqYdjwaJipM2hAjUogCvzE/edit?usp=sharing" target="_blank" rel="noopener noreferrer" className="text-primary underline">
             Privacy Policy
           </Link>
           <span className="text-primary">*</span>

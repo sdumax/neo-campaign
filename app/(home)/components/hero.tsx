@@ -6,50 +6,40 @@ const columns = [
   {
     images: [
       { src: "/home1.png", aspect: "aspect-[3/4]" },
-      { src: "/home2.png", aspect: "aspect-[4/5]" },
+      { src: "/home2.png", aspect: "aspect-[3/4]" },
       { src: "/home3.png", aspect: "aspect-[3/4]" },
     ],
-    offset: "",
     delay: "",
-    left: "left-0",
   },
   {
     images: [
-      { src: "/home4.png", aspect: "aspect-[4/5]" },
-      { src: "/home5.png", aspect: "aspect-[4/6]" },
-      { src: "/home6.png", aspect: "aspect-[4/7]" },
+      { src: "/home4.png", aspect: "aspect-[3/4]" },
+      { src: "/home5.png", aspect: "aspect-[3/4]" },
+      { src: "/home6.png", aspect: "aspect-[3/4]" },
     ],
-    offset: "pt-8",
     delay: "[animation-delay:-8s]",
-    left: "left-1/3",
   },
   {
     images: [
       { src: "/home7.png", aspect: "aspect-[3/4]" },
-      { src: "/home8.png", aspect: "aspect-[4/5]" },
+      { src: "/home8.png", aspect: "aspect-[3/4]" },
       { src: "/home9.png", aspect: "aspect-[3/4]" },
     ],
-    offset: "",
     delay: "[animation-delay:-16s]",
-    left: "left-2/3",
   },
 ];
 
 function ScrollColumn({
   images,
-  offset,
-  delay,
 }: {
   images: { src: string; aspect: string }[];
-  offset: string;
-  delay: string;
 }) {
   return (
-    <div className={`animate-scroll-up ${delay}`}>
+    <div className={`animate-scroll-up space-y-4 `}>
       {[...images, ...images].map((img, i) => (
         <div
           key={i}
-          className={`relative w-full rounded-(--radius) overflow-hidden ${img.aspect} ${offset}`}>
+          className={`relative w-full rounded-(--radius) overflow-hidden ${img.aspect}`}>
           <Image
             src={img.src}
             alt=""
@@ -91,17 +81,15 @@ export function Hero() {
             data-aos="fade-left"
             data-aos-delay="200">
             <div className="absolute top-0 left-0 right-0 h-30 z-20 bg-linear-to-b from-background to-transparent pointer-events-none" />
-            {columns.map((col) => (
-              <div
-                key={col.left}
-                className={`absolute top-0 bottom-0 w-1/3 overflow-hidden ${col.left}`}>
+            <div className="grid grid-cols-3 gap-x-4 h-full">
+              {columns.map((col, i) => (
+                <div key={i} className={`overflow-hidden ${i ===1 ? "md:pt-32 pt-16" : ""}`}>
                 <ScrollColumn
                   images={col.images}
-                  offset={col.offset}
-                  delay={col.delay}
                 />
-              </div>
-            ))}
+                </div>
+              ))}
+            </div>
             <div className="absolute bottom-0 left-0 right-0 h-40 z-20 bg-linear-to-t from-background to-transparent pointer-events-none" />
           </div>
         </div>

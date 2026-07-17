@@ -9,7 +9,7 @@ export function Hero() {
           <br />
           Creators Who
           <br />
-          Actually Convert
+          Actually Convert.
         </>
       }
       subtext="NeoCampaign helps brands find, manage, and launch campaigns with creators who can turn attention into clicks, signups, and sales."

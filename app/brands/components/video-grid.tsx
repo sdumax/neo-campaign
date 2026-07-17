@@ -20,8 +20,8 @@ const videos = [
     url: "https://www.youtube.com/embed/L4ijTsL7tJI",
   },
   {
-    title: "OpenArt Integration",
-    url: "https://www.youtube.com/embed/TPV1Wa4if_U",
+    title: "Capcut Collaboration",
+    url: "https://www.youtube.com/embed/CDv0YqOtvEU",
   },
 ];
 

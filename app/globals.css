@@ -47,7 +47,7 @@
   --radius-4xl: calc(var(--radius) * 2.6);
   --animate-marquee: marquee 30s linear infinite;
   --animate-globe-spin: globe-spin 8s linear infinite;
-  --animate-scroll-up: scroll-up 25s linear infinite;
+  --animate-scroll-up: scroll-up 10s linear infinite;
 }
 
 @keyframes globe-spin {
