@@ -1,2 +1,2 @@
 [phases.setup]
-nixPkgs = ["python3", "nodejs_18", "pnpm-10_x", "openssl"]
+nixPkgs = ["python3", "gcc", "nodejs_18", "pnpm-10_x", "openssl"]
