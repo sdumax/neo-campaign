@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { appendToSheet } from "@/lib/google-sheets";
+import { insertBrand } from "@/lib/db";
 import { brandSchema } from "@/lib/schemas";
 
 export async function POST(request: Request) {
@@ -9,27 +9,26 @@ export async function POST(request: Request) {
   if (!result.success) {
     return NextResponse.json(
       { errors: result.error.flatten().fieldErrors },
-      { status: 400 },
+      { status: 400 }
     );
   }
 
   const { name, email, company, website, budget, message } = result.data;
 
   try {
-    await appendToSheet("Brands", [
-      new Date().toISOString(),
+    await insertBrand({
       name,
       email,
-      company ?? "",
+      company: company ?? undefined,
       website,
       budget,
-      message ?? "",
-    ]);
+      message: message ?? undefined,
+    });
     return NextResponse.json({ success: true });
   } catch {
     return NextResponse.json(
       { error: "Failed to submit form" },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }

@@ -1,7 +1,10 @@
+"use client";
+
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { BgGlobe } from "@/components/bg-globe";
+import { useAnalytics } from "@/lib/useAnalytics";
 
 interface HeroSharedProps {
   heading: ReactNode;
@@ -10,7 +13,14 @@ interface HeroSharedProps {
   buttonHref: string;
 }
 
-export function HeroShared({ heading, subtext, buttonText, buttonHref }: HeroSharedProps) {
+export function HeroShared({
+  heading,
+  subtext,
+  buttonText,
+  buttonHref,
+}: HeroSharedProps) {
+  const { track } = useAnalytics();
+
   return (
     <section className="relative flex min-h-[90vh] items-center flex-col md:flex-row overflow-hidden md:px-24 px-6  container mx-auto gap-4">
       <div className="pointer-events-none  lg:hidden w-3/4 ">
@@ -26,7 +36,13 @@ export function HeroShared({ heading, subtext, buttonText, buttonHref }: HeroSha
               {subtext}
             </p>
             <Link href={buttonHref} className="w-fit">
-              <Button>{buttonText}</Button>
+              <Button
+                onClick={() =>
+                  track("click", buttonHref, `hero-cta-${buttonText.toLowerCase().replace(/\s+/g, "-")}`)
+                }
+              >
+                {buttonText}
+              </Button>
             </Link>
           </div>
           <div

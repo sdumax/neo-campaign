@@ -45,3 +45,4 @@ next-env.d.ts
 .opencode/
 
 docs/
+/lib/generated/prisma

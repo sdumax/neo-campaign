@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useAnalytics } from "@/lib/useAnalytics";
 
 const columns = [
   {
@@ -54,6 +57,8 @@ function ScrollColumn({
 }
 
 export function Hero() {
+  const { track } = useAnalytics();
+
   return (
     <section className="relative h-[85vh] overflow-hidden">
       <div className="mx-auto container px-6 md:px-24 h-full">
@@ -73,7 +78,12 @@ export function Hero() {
               sales.
             </p>
             <Link href="#contact" className="w-full md:w-fit">
-              <Button className="w-full md:w-fit">Get in touch</Button>
+              <Button
+                className="w-full md:w-fit"
+                onClick={() => track("click", "/", "hero-cta-get-in-touch")}
+              >
+                Get in touch
+              </Button>
             </Link>
           </div>
           <div

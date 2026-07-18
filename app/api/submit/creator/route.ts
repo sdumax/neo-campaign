@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { appendToSheet } from "@/lib/google-sheets";
+import { insertCreator } from "@/lib/db";
 import { creatorSchema } from "@/lib/schemas";
 
 export async function POST(request: Request) {
@@ -9,25 +9,24 @@ export async function POST(request: Request) {
   if (!result.success) {
     return NextResponse.json(
       { errors: result.error.flatten().fieldErrors },
-      { status: 400 },
+      { status: 400 }
     );
   }
 
   const { name, email, socialMedia, message } = result.data;
 
   try {
-    await appendToSheet("Creators", [
-      new Date().toISOString(),
+    await insertCreator({
       name,
       email,
       socialMedia,
-      message ?? "",
-    ]);
+      message: message ?? undefined,
+    });
     return NextResponse.json({ success: true });
   } catch {
     return NextResponse.json(
       { error: "Failed to submit form" },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }
