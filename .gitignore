@@ -46,3 +46,7 @@ next-env.d.ts
 
 docs/
 /lib/generated/prisma
+
+# docker persistence
+/data/
+.db

@@ -1,0 +1,17 @@
+node_modules
+.next
+.git
+data
+*.db
+.env
+.env.*
+!.env.example
+Dockerfile
+docker-compose.yml
+.dockerignore
+nixpacks.toml
+README.md
+docs
+.ai
+.opencode
+.DS_Store

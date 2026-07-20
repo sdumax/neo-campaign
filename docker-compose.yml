@@ -1,0 +1,13 @@
+services:
+  web:
+    build: .
+    ports:
+      - "5500:5500"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - DATABASE_URL=file:/app/data/prod.db
+      - DASHBOARD_USER=admin
+      - DASHBOARD_PASSWORD=admin123
+      - NODE_ENV=production
+    restart: always
