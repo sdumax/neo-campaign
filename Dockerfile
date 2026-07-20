@@ -43,9 +43,6 @@ COPY --from=build /app/prisma.config.ts ./prisma.config.ts
 COPY --from=build /app/start.sh ./start.sh
 
 RUN chmod +x ./start.sh
-RUN mkdir -p /app/data && chown nextjs:nodejs /app/data
-
-USER nextjs
 
 EXPOSE 5500
 ENV PORT=5500
