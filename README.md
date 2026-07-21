@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Neo Campaign
 
-## Getting Started
+Next.js campaign site with Prisma and PostgreSQL.
 
-First, run the development server:
+## Local Development
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Create a `.env` file with:
+
+```env
+DATABASE_URL="postgresql://USER:PASSWORD@HOST:5432/DATABASE?schema=public"
+DASHBOARD_USER="admin"
+DASHBOARD_PASSWORD="change-me"
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Install dependencies and start the app:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm install
+pnpm db:deploy
+pnpm dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The development server runs on `http://localhost:5500`.
 
-## Learn More
+## cPanel Node.js Deployment
 
-To learn more about Next.js, take a look at the following resources:
+Create a PostgreSQL database and user in cPanel, then set these environment variables in the Node.js app settings:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```env
+NODE_ENV=production
+DATABASE_URL=postgresql://CPANEL_DB_USER:CPANEL_DB_PASSWORD@localhost:5432/CPANEL_DB_NAME?schema=public
+DASHBOARD_USER=your_admin_user
+DASHBOARD_PASSWORD=your_secure_password
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Use these cPanel settings:
 
-## Deploy on Vercel
+- Application startup file: `server.cjs`
+- Package manager: `pnpm`
+- Startup command: `pnpm start` if your cPanel UI asks for one
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Deploy/update commands:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+pnpm install --frozen-lockfile
+pnpm db:deploy
+pnpm build
+```
+
+Restart the Node.js app from cPanel after deploying new code or changing environment variables.
+
+## Scripts
+
+- `pnpm dev` starts Next.js locally on port 5500.
+- `pnpm build` generates Prisma client and builds Next.js.
+- `pnpm start` runs the cPanel-compatible Node.js startup file.
+- `pnpm db:deploy` applies Prisma migrations to PostgreSQL.
+- `pnpm lint` runs ESLint.

@@ -2,4 +2,4 @@
 set -e
 
 npx prisma migrate deploy
-exec ./node_modules/.bin/next start
+exec node server.cjs
