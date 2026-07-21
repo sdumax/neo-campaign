@@ -1,22 +1,18 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 
-const { existsSync, rmSync, mkdirSync } = require("fs");
+const { existsSync, rmSync, mkdirSync, readFileSync, writeFileSync } = require("fs");
 const { join } = require("path");
 const { spawnSync } = require("child_process");
 
 const root = process.cwd();
 const deployDir = join(root, "deploy");
 const archivePath = join(deployDir, "neo-campaign-cpanel.tar.gz");
+const partPrefix = `${archivePath}.part-`;
+const maxPartSize = 45 * 1024 * 1024;
 
 const requiredPaths = [
   ".next",
   "public",
-  "db",
-  "scripts/migrate.cjs",
-  "server.cjs",
-  "package.json",
-  "package-lock.json",
-  "next.config.ts",
 ];
 
 const missing = requiredPaths.filter((filePath) => !existsSync(join(root, filePath)));
@@ -34,23 +30,31 @@ mkdirSync(deployDir, { recursive: true });
 const files = [
   ".next",
   "public",
-  "db",
-  "scripts/migrate.cjs",
-  "server.cjs",
-  "package.json",
-  "package-lock.json",
-  "next.config.ts",
-  "README.md",
-  ".env.example",
 ];
 
-const result = spawnSync("tar", ["-czf", archivePath, ...files], {
-  cwd: root,
-  stdio: "inherit",
-});
+const result = spawnSync(
+  "tar",
+  ["--exclude", ".next/cache", "--exclude", ".next/dev", "-czf", archivePath, ...files],
+  {
+    cwd: root,
+    stdio: "inherit",
+  }
+);
 
 if (result.status !== 0) {
   process.exit(result.status ?? 1);
 }
 
-console.log(`Created ${archivePath}`);
+const archive = readFileSync(archivePath);
+const totalParts = Math.ceil(archive.length / maxPartSize);
+
+for (let index = 0; index < totalParts; index += 1) {
+  const start = index * maxPartSize;
+  const end = Math.min(start + maxPartSize, archive.length);
+  const partPath = `${partPrefix}${String(index).padStart(3, "0")}`;
+  writeFileSync(partPath, archive.subarray(start, end));
+  console.log(`Created ${partPath}`);
+}
+
+rmSync(archivePath);
+console.log(`Split deploy artifact into ${totalParts} parts`);

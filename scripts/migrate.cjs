@@ -4,7 +4,7 @@ const fs = require("fs/promises");
 const path = require("path");
 const { Pool } = require("pg");
 
-async function main() {
+async function runMigrations() {
   if (!process.env.DATABASE_URL) {
     throw new Error("DATABASE_URL is required");
   }
@@ -56,7 +56,11 @@ async function main() {
   }
 }
 
-main().catch((error) => {
-  console.error(error);
-  process.exit(1);
-});
+module.exports = { runMigrations };
+
+if (require.main === module) {
+  runMigrations().catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
+}

@@ -19,7 +19,8 @@
 
 # production
 /build
-/deploy
+/deploy/*
+!/deploy/neo-campaign-cpanel.tar.gz.part-*
 
 # misc
 .DS_Store

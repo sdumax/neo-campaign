@@ -39,36 +39,42 @@ Use these cPanel settings:
 - Package manager: `npm`
 - Startup command: `npm start` if your cPanel UI asks for one
 
-Do not run `npm run build` on cPanel. Shared cPanel/CloudLinux environments can fail while allocating WebAssembly memory during `next build`. Build locally, upload the packaged build, then only install production dependencies and run migrations on cPanel.
+Do not run `npm run build` on cPanel. Shared cPanel/CloudLinux environments can fail while allocating WebAssembly memory during `next build`. Build locally, commit the generated tar artifact, then let cPanel pull the prebuilt app from Git.
 
-Create the deployment package locally:
+Git-based cPanel deployment flow:
 
 ```bash
 npm ci
 npm run deploy:pack
+git add .
+git commit -m "Prepare cPanel deployment"
+git push
 ```
 
-This creates:
+This creates split deploy artifact files such as:
 
 ```txt
-deploy/neo-campaign-cpanel.tar.gz
+deploy/neo-campaign-cpanel.tar.gz.part-000
+deploy/neo-campaign-cpanel.tar.gz.part-001
+deploy/neo-campaign-cpanel.tar.gz.part-002
 ```
 
-Upload and extract that archive into the cPanel application root, then run these commands on cPanel:
+The split artifact contains `.next/` and `public/`. Raw `.next/` remains ignored. The app reassembles the parts into `deploy/neo-campaign-cpanel.tar.gz` on cPanel startup before extracting.
 
-```bash
-npm ci --omit=dev
-npm run db:deploy
-```
+Then in cPanel:
 
-Restart the Node.js app from cPanel after deploying new code or changing environment variables.
+- Pull the latest Git changes.
+- Run cPanel's npm install action if dependencies changed.
+- Restart the Node.js app.
+
+On production startup, `server.cjs` reassembles the split tar parts when needed, extracts the build, runs database migrations, then starts Next.js.
 
 ## Scripts
 
 - `npm run dev` starts Next.js locally on port 5500.
 - `npm run build` builds Next.js.
-- `npm start` runs the cPanel-compatible Node.js startup file.
+- `npm start` extracts the deploy tar in production, runs migrations, then starts the cPanel-compatible Node.js server.
 - `npm run db:deploy` applies SQL migrations from `db/migrations` to PostgreSQL.
-- `npm run deploy:pack` builds locally and creates `deploy/neo-campaign-cpanel.tar.gz`.
-- `npm run deploy:pack:no-build` creates the archive from an existing `.next` build.
+- `npm run deploy:pack` builds locally and creates split deploy artifact files in `deploy/`.
+- `npm run deploy:pack:no-build` creates split deploy artifact files from an existing `.next` build.
 - `npm run lint` runs ESLint.
