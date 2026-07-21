@@ -7,6 +7,10 @@
     "build": "prisma generate && next build",
     "start": "node server.cjs",
     "db:deploy": "prisma migrate deploy",
+    "db:deploy:log": "prisma migrate deploy > db-deploy.log 2>&1",
+    "build:log": "npm run build > build.log 2>&1",
+    "start:log": "node server.cjs > app.log 2>&1",
+    "debug:log": "node -v > debug.log 2>&1 && npm -v >> debug.log 2>&1 && which node >> debug.log 2>&1 && which npm >> debug.log 2>&1 && npm run db:deploy >> debug.log 2>&1",
     "lint": "eslint"
   },
   "dependencies": {
