@@ -1,6 +1,6 @@
 # Neo Campaign
 
-Next.js campaign site with Prisma and PostgreSQL.
+Next.js campaign site with PostgreSQL.
 
 ## Local Development
 
@@ -52,7 +52,7 @@ Restart the Node.js app from cPanel after deploying new code or changing environ
 ## Scripts
 
 - `npm run dev` starts Next.js locally on port 5500.
-- `npm run build` generates Prisma client and builds Next.js.
+- `npm run build` builds Next.js.
 - `npm start` runs the cPanel-compatible Node.js startup file.
-- `npm run db:deploy` applies Prisma migrations to PostgreSQL.
+- `npm run db:deploy` applies SQL migrations from `db/migrations` to PostgreSQL.
 - `npm run lint` runs ESLint.
