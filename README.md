@@ -15,9 +15,9 @@ DASHBOARD_PASSWORD="change-me"
 Install dependencies and start the app:
 
 ```bash
-pnpm install
-pnpm db:deploy
-pnpm dev
+npm install
+npm run db:deploy
+npm run dev
 ```
 
 The development server runs on `http://localhost:5500`.
@@ -36,23 +36,23 @@ DASHBOARD_PASSWORD=your_secure_password
 Use these cPanel settings:
 
 - Application startup file: `server.cjs`
-- Package manager: `pnpm`
-- Startup command: `pnpm start` if your cPanel UI asks for one
+- Package manager: `npm`
+- Startup command: `npm start` if your cPanel UI asks for one
 
 Deploy/update commands:
 
 ```bash
-pnpm install --frozen-lockfile
-pnpm db:deploy
-pnpm build
+npm ci
+npm run db:deploy
+npm run build
 ```
 
 Restart the Node.js app from cPanel after deploying new code or changing environment variables.
 
 ## Scripts
 
-- `pnpm dev` starts Next.js locally on port 5500.
-- `pnpm build` generates Prisma client and builds Next.js.
-- `pnpm start` runs the cPanel-compatible Node.js startup file.
-- `pnpm db:deploy` applies Prisma migrations to PostgreSQL.
-- `pnpm lint` runs ESLint.
+- `npm run dev` starts Next.js locally on port 5500.
+- `npm run build` generates Prisma client and builds Next.js.
+- `npm start` runs the cPanel-compatible Node.js startup file.
+- `npm run db:deploy` applies Prisma migrations to PostgreSQL.
+- `npm run lint` runs ESLint.
