@@ -39,12 +39,26 @@ Use these cPanel settings:
 - Package manager: `npm`
 - Startup command: `npm start` if your cPanel UI asks for one
 
-Deploy/update commands:
+Do not run `npm run build` on cPanel. Shared cPanel/CloudLinux environments can fail while allocating WebAssembly memory during `next build`. Build locally, upload the packaged build, then only install production dependencies and run migrations on cPanel.
+
+Create the deployment package locally:
 
 ```bash
 npm ci
+npm run deploy:pack
+```
+
+This creates:
+
+```txt
+deploy/neo-campaign-cpanel.tar.gz
+```
+
+Upload and extract that archive into the cPanel application root, then run these commands on cPanel:
+
+```bash
+npm ci --omit=dev
 npm run db:deploy
-npm run build
 ```
 
 Restart the Node.js app from cPanel after deploying new code or changing environment variables.
@@ -55,4 +69,6 @@ Restart the Node.js app from cPanel after deploying new code or changing environ
 - `npm run build` builds Next.js.
 - `npm start` runs the cPanel-compatible Node.js startup file.
 - `npm run db:deploy` applies SQL migrations from `db/migrations` to PostgreSQL.
+- `npm run deploy:pack` builds locally and creates `deploy/neo-campaign-cpanel.tar.gz`.
+- `npm run deploy:pack:no-build` creates the archive from an existing `.next` build.
 - `npm run lint` runs ESLint.

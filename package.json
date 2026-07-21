@@ -11,6 +11,8 @@
     "build:log": "npm run build > build.log 2>&1",
     "start:log": "node server.cjs > app.log 2>&1",
     "debug:log": "node -v > debug.log 2>&1 && npm -v >> debug.log 2>&1 && which node >> debug.log 2>&1 && which npm >> debug.log 2>&1 && npm run db:deploy >> debug.log 2>&1",
+    "deploy:pack": "npm run build && node scripts/package-deploy.cjs",
+    "deploy:pack:no-build": "node scripts/package-deploy.cjs",
     "lint": "eslint"
   },
   "dependencies": {
