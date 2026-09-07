@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { authFetch } from "@/lib/api-client";
 import {
   Table,
   TableBody,
@@ -52,7 +53,7 @@ export function AnalyticsSection() {
   const [data, setData] = useState<AnalyticsData | null>(null);
 
   useEffect(() => {
-    fetch("/api/control-center/analytics")
+    authFetch("/api/control-center/analytics")
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch");
         return res.json();

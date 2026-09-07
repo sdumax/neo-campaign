@@ -22,7 +22,7 @@ export function Header() {
             className="text-sm font-medium text-foreground hover:text-primary transition-colors"
             onClick={() => track("click", "/creators", "nav-creators")}
           >
-            Creators
+            Our Creators
           </Link>
           <Link
             href="/brands"
@@ -30,6 +30,13 @@ export function Header() {
             onClick={() => track("click", "/brands", "nav-brands")}
           >
             Brands
+          </Link>
+          <Link
+            href="/partners"
+            className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+            onClick={() => track("click", "/partners", "nav-partners")}
+          >
+            Partners
           </Link>
         </nav>
         <div className="ml-auto hidden md:block">
@@ -63,7 +70,7 @@ export function Header() {
                 setIsMenuOpen(false);
               }}
             >
-              Creators
+              Our Creators
             </Link>
             <Link
               href="/brands"
@@ -74,6 +81,16 @@ export function Header() {
               }}
             >
               Brands
+            </Link>
+            <Link
+              href="/partners"
+              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+              onClick={() => {
+                track("click", "/partners", "nav-partners");
+                setIsMenuOpen(false);
+              }}
+            >
+              Partners
             </Link>
           </div>
         </div>

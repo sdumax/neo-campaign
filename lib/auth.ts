@@ -1,7 +1,8 @@
 import { cookies } from "next/headers";
+import type { NextRequest } from "next/server";
 
 const SESSION_COOKIE = "session_token";
-const SESSION_MAX_AGE = 60 * 60 * 24; // 24 hours
+const SESSION_MAX_AGE = 60 * 60 * 24 * 7; // 7 days
 
 export async function verifyCredentials(
   username: string,
@@ -19,8 +20,12 @@ export async function createSession(): Promise<string> {
 }
 
 export async function getSession(): Promise<string | null> {
-  const cookieStore = await cookies();
-  return cookieStore.get(SESSION_COOKIE)?.value ?? null;
+  try {
+    const cookieStore = await cookies();
+    return cookieStore.get(SESSION_COOKIE)?.value ?? null;
+  } catch {
+    return null;
+  }
 }
 
 export async function setSessionCookie(token: string): Promise<void> {
@@ -39,7 +44,18 @@ export async function clearSession(): Promise<void> {
   cookieStore.delete(SESSION_COOKIE);
 }
 
-export async function isAuthenticated(): Promise<boolean> {
+export async function isAuthenticated(req?: NextRequest | Request): Promise<boolean> {
+  if (req) {
+    if ("cookies" in req && typeof (req as NextRequest).cookies?.get === "function") {
+      const token = (req as NextRequest).cookies.get(SESSION_COOKIE)?.value;
+      if (token) return true;
+    }
+    const cookieHeader = req.headers?.get("cookie");
+    if (cookieHeader && cookieHeader.includes(`${SESSION_COOKIE}=`)) {
+      return true;
+    }
+  }
+
   const token = await getSession();
   return token !== null;
 }

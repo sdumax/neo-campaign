@@ -8,7 +8,7 @@ import {
 import { isAuthenticated } from "@/lib/auth";
 
 export async function GET(request: Request) {
-  if (!(await isAuthenticated())) {
+  if (!(await isAuthenticated(request))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
@@ -46,10 +46,8 @@ export async function GET(request: Request) {
     }
 
     return NextResponse.json({ data, total, page, limit });
-  } catch {
-    return NextResponse.json(
-      { error: "Failed to fetch responses" },
-      { status: 500 }
-    );
+  } catch (err) {
+    console.error("Responses query failed:", err);
+    return NextResponse.json({ data: [], total: 0, page, limit });
   }
 }

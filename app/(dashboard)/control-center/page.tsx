@@ -1,6 +1,5 @@
 import { StatsCards } from "./components/stats-cards";
-import { ResponseTable } from "./components/response-table";
-import { AnalyticsSection } from "./components/analytics-section";
+import { DashboardTabs } from "./components/dashboard-tabs";
 
 export default function ControlCenterPage() {
   return (
@@ -10,25 +9,13 @@ export default function ControlCenterPage() {
           Control Center
         </h1>
         <p className="mt-1 text-sm text-muted-foreground">
-          Campaign responses & analytics
+          Campaign responses, creators CMS & analytics
         </p>
       </div>
 
       <StatsCards />
 
-      <div className="mt-8 rounded-lg border border-primary bg-card">
-        <div className="px-6 py-4">
-          <h2 className="text-base font-semibold text-foreground">
-            Responses
-          </h2>
-          <p className="mt-0.5 text-sm text-muted-foreground">
-            View and manage form submissions
-          </p>
-        </div>
-        <ResponseTable />
-      </div>
-
-      <AnalyticsSection />
+      <DashboardTabs />
     </main>
   );
 }

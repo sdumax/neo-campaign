@@ -1,0 +1,2 @@
+ALTER TABLE partner_creators ADD COLUMN IF NOT EXISTS email TEXT NOT NULL DEFAULT 'contact@neocampaign.com';
+ALTER TABLE partner_creators ADD COLUMN IF NOT EXISTS last_synced_at TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP;

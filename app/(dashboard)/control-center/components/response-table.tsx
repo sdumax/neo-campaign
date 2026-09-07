@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { authFetch } from "@/lib/api-client";
 import {
   Table,
   TableBody,
@@ -175,12 +176,12 @@ export function ResponseTable() {
     let cancelled = false;
     const controller = new AbortController();
 
-    fetch(`/api/control-center/responses?type=${tab}&page=${page}&limit=10`, {
+    authFetch(`/api/control-center/responses?type=${tab}&page=${page}&limit=10`, {
       signal: controller.signal,
     })
       .then((res) => res.json())
       .then((json) => {
-        if (!cancelled) {
+        if (!cancelled && json) {
           setData(json);
           setLoading(false);
         }
