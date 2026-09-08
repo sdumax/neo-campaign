@@ -2,21 +2,24 @@ services:
   web:
     build: .
     ports:
-      - "5500:5500"
+      - "${PORT:-5500}:5500"
     depends_on:
       - postgres
     environment:
-      - DATABASE_URL=postgresql://user:password@postgres:5432/neo_campaign?schema=public
-      - DASHBOARD_USER=admin
-      - DASHBOARD_PASSWORD=admin123
-      - NODE_ENV=production
+      - NODE_ENV=${NODE_ENV:-production}
+      - PORT=${PORT:-5500}
+      - DATABASE_URL=${DATABASE_URL:-postgresql://${POSTGRES_USER:-user}:${POSTGRES_PASSWORD:-password}@postgres:5432/${POSTGRES_DB:-neo_campaign}?schema=public}
+      - DASHBOARD_USER=${DASHBOARD_USER:-admin}
+      - DASHBOARD_PASSWORD=${DASHBOARD_PASSWORD:-admin123}
+      - YOUTUBE_API_KEY=${YOUTUBE_API_KEY:-}
     restart: always
+
   postgres:
     image: postgres:16-alpine
     environment:
-      - POSTGRES_DB=neo_campaign
-      - POSTGRES_USER=user
-      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=${POSTGRES_DB:-neo_campaign}
+      - POSTGRES_USER=${POSTGRES_USER:-user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-password}
     volumes:
       - postgres-data:/var/lib/postgresql/data
     restart: always
