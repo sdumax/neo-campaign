@@ -340,7 +340,7 @@ export type DBCollaborationBrand = {
 export type DBPartnerCreator = {
   id: number;
   name: string;
-  email: string;
+  email: string | null;
   handle: string;
   avatar: string;
   bannerText: string | null;
@@ -460,7 +460,9 @@ async function ensurePartnersSchema() {
   if (partnersSchemaEnsured) return;
   try {
     await pool.query(`
-      ALTER TABLE partner_creators ADD COLUMN IF NOT EXISTS email TEXT NOT NULL DEFAULT 'contact@neocampaign.com';
+      ALTER TABLE partner_creators ADD COLUMN IF NOT EXISTS email TEXT;
+      ALTER TABLE partner_creators ALTER COLUMN email DROP NOT NULL;
+      ALTER TABLE partner_creators ALTER COLUMN email DROP DEFAULT;
       ALTER TABLE partner_creators ADD COLUMN IF NOT EXISTS last_synced_at TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP;
     `);
     partnersSchemaEnsured = true;
@@ -475,7 +477,7 @@ export async function getAllAdminCreators(): Promise<DBPartnerCreator[]> {
     const creatorsResult = await pool.query<{
       id: number;
       name: string;
-      email: string;
+      email: string | null;
       handle: string;
       avatar: string;
       banner_text: string | null;
@@ -491,7 +493,7 @@ export async function getAllAdminCreators(): Promise<DBPartnerCreator[]> {
       created_at: Date;
       updated_at: Date;
     }>(
-      `SELECT id, name, COALESCE(email, 'contact@neocampaign.com') as email, handle, avatar, banner_text, banner_bg, banner_image,
+      `SELECT id, name, email, handle, avatar, banner_text, banner_bg, banner_image,
               subscribers, videos_count, bio, channel_url, is_active, sort_order,
               last_synced_at, created_at, updated_at
        FROM partner_creators
@@ -532,7 +534,7 @@ export async function getAllAdminCreators(): Promise<DBPartnerCreator[]> {
       creators.push({
         id: c.id,
         name: c.name,
-        email: c.email,
+        email: c.email || null,
         handle: c.handle,
         avatar: c.avatar,
         bannerText: c.banner_text,
@@ -575,12 +577,13 @@ export async function getPublicPartnerCreators() {
     const creators = await getAllAdminCreators();
     const active = creators.filter((c) => c.isActive);
     if (active.length > 0) {
-      // 14-day Stale-While-Revalidate check
-      const FOURTEEN_DAYS_MS = 14 * 24 * 60 * 60 * 1000;
+      // Configurable Stale-While-Revalidate check (default 3 days for at least twice a week)
+      const syncIntervalDays = Number(process.env.YOUTUBE_SYNC_INTERVAL_DAYS) || 3;
+      const SYNC_INTERVAL_MS = syncIntervalDays * 24 * 60 * 60 * 1000;
       const now = Date.now();
       const hasOutdatedCreator = active.some((c) => {
         if (!c.lastSyncedAt) return true;
-        return now - new Date(c.lastSyncedAt).getTime() > FOURTEEN_DAYS_MS;
+        return now - new Date(c.lastSyncedAt).getTime() > SYNC_INTERVAL_MS;
       });
 
       if (hasOutdatedCreator) {
@@ -593,7 +596,7 @@ export async function getPublicPartnerCreators() {
       return active.map((c) => ({
         id: String(c.id),
         name: c.name,
-        email: c.email || "contact@neocampaign.com",
+        email: c.email || undefined,
         handle: c.handle,
         avatar: c.avatar,
         bannerText: c.bannerText || undefined,
@@ -619,7 +622,7 @@ export async function getPublicPartnerCreators() {
 
 export async function createPartnerCreator(data: {
   name: string;
-  email: string;
+  email?: string | null;
   handle: string;
   avatar: string;
   bannerText?: string;
@@ -653,7 +656,7 @@ export async function createPartnerCreator(data: {
        RETURNING id`,
       [
         data.name,
-        data.email,
+        data.email ? data.email.trim() : null,
         data.handle,
         data.avatar,
         data.bannerText || null,
@@ -744,24 +747,25 @@ export async function updatePartnerCreator(
     await client.query(
       `UPDATE partner_creators
        SET name = COALESCE($1, name),
-           email = COALESCE($2, email),
-           handle = COALESCE($3, handle),
-           avatar = COALESCE($4, avatar),
-           banner_text = COALESCE($5, banner_text),
-           banner_bg = COALESCE($6, banner_bg),
-           banner_image = COALESCE($7, banner_image),
-           subscribers = COALESCE($8, subscribers),
-           videos_count = COALESCE($9, videos_count),
-           bio = COALESCE($10, bio),
-           channel_url = COALESCE($11, channel_url),
-           is_active = COALESCE($12, is_active),
-           sort_order = COALESCE($13, sort_order),
+           email = CASE WHEN $2::boolean THEN $3 ELSE email END,
+           handle = COALESCE($4, handle),
+           avatar = COALESCE($5, avatar),
+           banner_text = COALESCE($6, banner_text),
+           banner_bg = COALESCE($7, banner_bg),
+           banner_image = COALESCE($8, banner_image),
+           subscribers = COALESCE($9, subscribers),
+           videos_count = COALESCE($10, videos_count),
+           bio = COALESCE($11, bio),
+           channel_url = COALESCE($12, channel_url),
+           is_active = COALESCE($13, is_active),
+           sort_order = COALESCE($14, sort_order),
            last_synced_at = CURRENT_TIMESTAMP,
            updated_at = CURRENT_TIMESTAMP
-       WHERE id = $14`,
+       WHERE id = $15`,
       [
         data.name ?? null,
-        data.email ?? null,
+        data.email !== undefined,
+        data.email ? data.email.trim() : null,
         data.handle ?? null,
         data.avatar ?? null,
         data.bannerText ?? null,

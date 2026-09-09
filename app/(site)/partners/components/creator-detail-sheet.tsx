@@ -59,8 +59,11 @@ export function CreatorDetailSheet({
 }: CreatorDetailSheetProps) {
   if (!creator) return null;
 
+  const hasEmail = Boolean(creator.email && creator.email.trim().length > 0);
+
   const handleMessageClick = () => {
-    const email = creator.email || "contact@neocampaign.com";
+    if (!creator.email) return;
+    const email = creator.email.trim();
     const subject = encodeURIComponent(
       `Brand Collaboration Inquiry via NEO Campaign (${creator.name})`
     );
@@ -146,12 +149,14 @@ export function CreatorDetailSheet({
 
             {/* Actions */}
             <div className="flex items-center gap-3 shrink-0 self-start md:self-center">
-              <Button
-                onClick={handleMessageClick}
-                className="bg-[#e50914] hover:bg-[#d00812] text-xs md:text-sm font-semibold px-5 h-9 rounded-md shadow-sm normal-case tracking-normal"
-              >
-                Message
-              </Button>
+              {hasEmail && (
+                <Button
+                  onClick={handleMessageClick}
+                  className="bg-[#e50914] hover:bg-[#d00812] text-xs md:text-sm font-semibold px-5 h-9 rounded-md shadow-sm normal-case tracking-normal"
+                >
+                  Message
+                </Button>
+              )}
               <a
                 href={creator.channelUrl}
                 target="_blank"

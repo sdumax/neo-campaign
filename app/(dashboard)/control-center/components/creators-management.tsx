@@ -40,7 +40,7 @@ interface VideoInput {
 interface Creator {
   id: number;
   name: string;
-  email: string;
+  email: string | null;
   handle: string;
   avatar: string;
   bannerText: string | null;
@@ -561,13 +561,13 @@ export function CreatorsManagement() {
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.handle || !formData.channelUrl) return;
+    if (!formData.name || !formData.handle || !formData.channelUrl) return;
 
     setSaving(true);
     try {
       const payload = {
         name: formData.name,
-        email: formData.email.trim(),
+        email: formData.email ? formData.email.trim() : null,
         handle: formData.handle,
         channelUrl: formData.channelUrl,
         avatar: formData.avatar,
@@ -976,12 +976,11 @@ export function CreatorsManagement() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="text-xs font-semibold text-foreground">
-                    Email Address * (Used for &quot;Message&quot; button)
+                    Email Address (Optional - Used for &quot;Message&quot; button)
                   </label>
                   <input
                     type="email"
-                    required
-                    placeholder="e.g. creator@example.com"
+                    placeholder="e.g. creator@example.com (leave blank to hide Message button)"
                     value={formData.email}
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })

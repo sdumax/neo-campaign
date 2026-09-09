@@ -22,7 +22,7 @@ export async function PUT(
 
     await updatePartnerCreator(creatorId, {
       name: body.name,
-      email: body.email ? body.email.trim() : undefined,
+      email: body.email !== undefined ? (body.email ? body.email.trim() : null) : undefined,
       handle: body.handle
         ? body.handle.startsWith("@")
           ? body.handle

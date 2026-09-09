@@ -15,7 +15,7 @@ export interface BrandCollaboration {
 export interface PartnerCreator {
   id: string;
   name: string;
-  email: string;
+  email?: string | null;
   handle: string;
   avatar: string;
   bannerText?: string;

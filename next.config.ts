@@ -7,19 +7,47 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "**.googleusercontent.com",
+        hostname: "*.googleusercontent.com",
       },
       {
         protocol: "https",
-        hostname: "**.ggpht.com",
+        hostname: "googleusercontent.com",
       },
       {
         protocol: "https",
-        hostname: "**.ytimg.com",
+        hostname: "*.ggpht.com",
       },
       {
         protocol: "https",
-        hostname: "**.youtube.com",
+        hostname: "yt3.ggpht.com",
+      },
+      {
+        protocol: "https",
+        hostname: "yt4.ggpht.com",
+      },
+      {
+        protocol: "https",
+        hostname: "*.ytimg.com",
+      },
+      {
+        protocol: "https",
+        hostname: "i.ytimg.com",
+      },
+      {
+        protocol: "https",
+        hostname: "i9.ytimg.com",
+      },
+      {
+        protocol: "https",
+        hostname: "img.youtube.com",
+      },
+      {
+        protocol: "https",
+        hostname: "*.youtube.com",
+      },
+      {
+        protocol: "https",
+        hostname: "youtube.com",
       },
       {
         protocol: "https",

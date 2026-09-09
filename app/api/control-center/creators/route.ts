@@ -37,16 +37,16 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
 
-    if (!body.name || !body.email || !body.handle || !body.channelUrl) {
+    if (!body.name || !body.handle || !body.channelUrl) {
       return NextResponse.json(
-        { error: "Name, email, handle, and channelUrl are required" },
+        { error: "Name, handle, and channelUrl are required" },
         { status: 400 }
       );
     }
 
     const creatorId = await createPartnerCreator({
       name: body.name,
-      email: body.email.trim(),
+      email: body.email ? body.email.trim() : null,
       handle: body.handle.startsWith("@") ? body.handle : `@${body.handle}`,
       avatar: body.avatar || "/creator1.png",
       bannerText: body.bannerText,
