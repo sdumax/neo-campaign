@@ -5,19 +5,28 @@ const globalForPg = globalThis as unknown as {
   pgPool: Pool | undefined;
 };
 
-function createPool() {
-  if (!process.env.DATABASE_URL) {
-    throw new Error("DATABASE_URL is required");
+function getPool(): Pool {
+  if (!globalForPg.pgPool) {
+    if (!process.env.DATABASE_URL) {
+      throw new Error("DATABASE_URL is required to connect to database");
+    }
+    globalForPg.pgPool = new Pool({
+      connectionString: process.env.DATABASE_URL,
+    });
   }
-
-  return new Pool({
-    connectionString: process.env.DATABASE_URL,
-  });
+  return globalForPg.pgPool;
 }
 
-const pool = globalForPg.pgPool ?? createPool();
-
-if (process.env.NODE_ENV !== "production") globalForPg.pgPool = pool;
+const pool = new Proxy({} as Pool, {
+  get(_target, prop: keyof Pool) {
+    const p = getPool();
+    const value = p[prop];
+    if (typeof value === "function") {
+      return (value as (...args: unknown[]) => unknown).bind(p);
+    }
+    return value;
+  },
+});
 
 type BrandRow = {
   id: number;

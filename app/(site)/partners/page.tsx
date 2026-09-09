@@ -4,6 +4,8 @@ import { WorkWithUsSection } from "@/components/work-with-us-section";
 import { Footer } from "@/components/footer";
 import { getPublicPartnerCreators } from "@/lib/db";
 
+export const dynamic = "force-dynamic";
+
 export default async function PartnersPage() {
   const creators = await getPublicPartnerCreators();
 
